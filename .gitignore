@@ -1,39 +1,49 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# compiled output
-/dist
-/tmp
-/out-tsc
-
-# dependencies
-node_modules
-
-# IDEs and editors
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
 /.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
+/.vscode
+/.vagrant
+Homestead.json
+Homestead.yaml
 npm-debug.log
 yarn-error.log
-testem.log
-/typings
+.env
+.phpunit.result.cache
 
-# System Files
+
+###
+
+node_modules
+/angular/node_modules
+/public/storage
+/public/node_modules
+/public/app
+/public/img/avatars
+/vendor
+/.idea
+Homestead.json
+Homestead*.yaml
+.env
 .DS_Store
+Desktop.ini
 Thumbs.db
+._*
+*.swp
+*.swo
+.vagrant
+Vagrantfile
+.todo
+!sass/vendor
+.vscode/*
+.vs/*
+
+storage/framework/*
+storage/app/*
+storage/logs/*
+bootstrap/cache
+
+after.sh
+aliases
