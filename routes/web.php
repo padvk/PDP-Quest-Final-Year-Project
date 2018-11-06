@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return 'hello';
-    // return view('welcome');
-});
+// Route::get('/', function () { return view('welcome'); });
+Route::get('/', function () { return 'Wrong URL'; });
+
+Route::get('getGameData', 'InitialiseGameController@returnGameData');

@@ -1,0 +1,14 @@
+.dialogue-box {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-width: 400px;
+    margin: 6px;
+    padding: 6px;
+    border: 4px solid lightcoral;
+    background-color: black;
+
+    font-family: "Bookman Old Style";
+    font-size: 26px;
+    color: white;
+}
