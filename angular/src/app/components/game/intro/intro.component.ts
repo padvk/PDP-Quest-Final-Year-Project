@@ -1,20 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-intro',
-  templateUrl: './intro.component.html',
-  styleUrls: ['./intro.component.css']
+	selector: 'app-intro',
+	templateUrl: './intro.component.html',
+	styleUrls: ['./intro.component.css']
 })
 export class IntroComponent implements OnInit {
 
-  public introDialogue = [
-    'Companion: Greetings! I am your companion.',
-    'Companion: This is the bit where I explain how to play the game.'
-  ];
+	@Output() nextPageEvent: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+	public introDialogue = [
+		'Companion: Greetings! I am your companion.',
+		'Companion: This is the bit where I explain how to play the game.'
+	];
 
-  ngOnInit() {
-  }
+	constructor() { }
+
+	ngOnInit() {
+	}
+
+	public nextPage() {
+		this.nextPageEvent.emit();
+	}
 
 }

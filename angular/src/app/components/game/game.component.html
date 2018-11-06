@@ -1,4 +1,11 @@
-<app-home *ngIf="state == 'home'" (play)="play()">
+<app-home *ngIf="state == 'home'" (play)="goTo('intro')">
 </app-home>
 
-<app-intro *ngIf="state == 'play'"></app-intro>
+<app-intro
+	*ngIf="state == 'intro'"
+	(nextPageEvent)="goTo('skill-picker')"
+></app-intro>
+
+<app-skill-picker
+	*ngIf="state == 'skill-picker'">
+</app-skill-picker>

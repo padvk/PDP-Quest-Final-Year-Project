@@ -14,8 +14,8 @@ export class GameComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	public play() {
-		this.state = 'play';
+	public goTo(page: string) {
+		this.state = page;
 		console.log('Playing');
 	}
 }

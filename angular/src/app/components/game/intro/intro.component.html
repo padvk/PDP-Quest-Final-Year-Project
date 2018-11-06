@@ -2,4 +2,7 @@
 	<img class="companion-img" src="/assets/images/companion.png" alt="Compaion image">
 </div>
 
-<app-dialogue [dialogue]="introDialogue"></app-dialogue>
+<app-dialogue
+	[dialogue]="introDialogue"
+	(finishedDialogue)="nextPage()">
+</app-dialogue>
