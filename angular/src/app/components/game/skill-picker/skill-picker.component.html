@@ -3,7 +3,9 @@
 	
 	<table class="skill-table">
 		<tr *ngFor="let row of suggestedSkills">
-			<td *ngFor="let item of row"><button> {{ item }} </button></td>
+			<td *ngFor="let item of row">
+				<button (click)="addSkill(item)"> {{ item }} </button>
+			</td>
 		</tr>
 	</table>
 </div>
@@ -11,7 +13,7 @@
 <div class="skill-input-section">
 	<h2 class="skill-picker-header">Input some other skills you want to develop that aren't in the list.</h2>
 	
-	<form (ngSubmit)="onSubmit(skillform)" #skillform>
+	<form (ngSubmit)="addSkill(skillform.elements[0].value)" #skillform>
 		<div class="form-group">
 			<label for="skillInput">Skill:</label>
 			<input type="text" class="form-control" id="skillInput">

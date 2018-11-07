@@ -20,8 +20,7 @@ export class SkillPickerComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	public onSubmit(form: any) {
-		const skill = form.elements[0].value;
+	public addSkill(skill: any) {
 		this.chosenSkills.push(skill);
 	}
 
