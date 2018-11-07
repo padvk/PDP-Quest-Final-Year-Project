@@ -1,15 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-skill-picker',
-  templateUrl: './skill-picker.component.html',
-  styleUrls: ['./skill-picker.component.css']
+	selector: 'app-skill-picker',
+	templateUrl: './skill-picker.component.html',
+	styleUrls: ['./skill-picker.component.css']
 })
 export class SkillPickerComponent implements OnInit {
 
-  constructor() { }
+	public suggestedSkills = [
+		['Presentation Skills', 'Leadership'],
+		['Problem Solving', 'Teamwork'],
+		['Critical Thinking', 'Spelling'],
+	];
 
-  ngOnInit() {
-  }
+	public chosenSkills = [];
 
+	constructor() { }
+
+	ngOnInit() {
+	}
+
+	public onSubmit(form: any) {
+		const skill = form.elements[0].value;
+		this.chosenSkills.push(skill);
+	}
+
+	public onNextClick() {
+		// use main.service to send the chosen skills to the backend, and store in database
+	}
 }

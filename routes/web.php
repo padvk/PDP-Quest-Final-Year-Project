@@ -12,6 +12,6 @@
 */
 
 // Route::get('/', function () { return view('welcome'); });
-Route::get('/', function () { return 'Wrong URL'; });
+Route::get('/', function () { return 'Laravel URL is working'; });
 
 Route::get('getGameData', 'InitialiseGameController@returnGameData');

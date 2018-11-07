@@ -1,3 +1,33 @@
-<p>
-  skill-picker works!
-</p>
+<div class="skill-input-section">
+	<h2 class="skill-picker-header">Select some skills (if any) you'd like to develop</h2>
+	
+	<table class="skill-table">
+		<tr *ngFor="let row of suggestedSkills">
+			<td *ngFor="let item of row"><button> {{ item }} </button></td>
+		</tr>
+	</table>
+</div>
+
+<div class="skill-input-section">
+	<h2 class="skill-picker-header">Input some other skills you want to develop that aren't in the list.</h2>
+	
+	<form (ngSubmit)="onSubmit(skillform)" #skillform>
+		<div class="form-group">
+			<label for="skillInput">Skill:</label>
+			<input type="text" class="form-control" id="skillInput">
+		</div>
+	
+		<button type="submit">Add</button>
+	</form>
+</div>
+
+<div class="chosen-skills-list">
+	Chosen skills:
+	<ul>
+		<li *ngFor="let skill of chosenSkills">{{ skill }}</li>
+	</ul>
+</div>
+
+<div class="skill-picker-footer">
+	<button (click)="onNextClick()">Next</button>
+</div>
