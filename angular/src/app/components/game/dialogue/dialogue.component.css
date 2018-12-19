@@ -1,14 +1,19 @@
 .dialogue-box {
     position: absolute;
     bottom: 0;
-    width: 100%;
-    max-width: 400px;
-    margin: 6px;
-    padding: 6px;
+    /* width: 100%; */
+    /* max-width: 400px; */
+    margin: 20px;
+    padding: 10px;
     border: 4px solid lightcoral;
     background-color: black;
 
+    width: -moz-calc(100% - 80px);
+    width: -webkit-calc(100% - 80px);
+    width: -o-calc(100% - 80px);
+    width: calc(100% - 80px);
+
     font-family: "Bookman Old Style";
-    font-size: 26px;
+    font-size: 36px;
     color: white;
 }

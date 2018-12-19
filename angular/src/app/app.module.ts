@@ -8,7 +8,6 @@ import { HomeComponent } from './components/home/home.component';
 import { GameComponent } from './components/game/game.component';
 import { IntroComponent } from './components/game/intro/intro.component';
 import { DialogueComponent } from './components/game/dialogue/dialogue.component';
-import { SkillPickerComponent } from './components/game/skill-picker/skill-picker.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +15,7 @@ import { SkillPickerComponent } from './components/game/skill-picker/skill-picke
     HomeComponent,
     GameComponent,
     IntroComponent,
-    DialogueComponent,
-    SkillPickerComponent
+    DialogueComponent
   ],
   imports: [
     BrowserModule,
