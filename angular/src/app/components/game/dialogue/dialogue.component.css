@@ -3,6 +3,7 @@
     bottom: 0;
     margin: 20px;
     margin-top: 0px;
+    cursor: pointer;
 
     width: -moz-calc(100% - 80px);
     width: -webkit-calc(100% - 80px);

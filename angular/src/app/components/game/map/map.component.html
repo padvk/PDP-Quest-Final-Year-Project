@@ -1,14 +1,16 @@
-<div class="location clickable1" (click)="handleLocationClick('clickable1')">
+<div class="map-background">
+	<div class="location clickable1" (click)="handleLocationClick('clickable1')">
+	</div>
+	
+	<div class="location clickable2" (click)="handleLocationClick('clickable2')">
+	</div>
+	
+	<div class="location clickable3" (click)="handleLocationClick('clickable3')">
+	</div>
+	
+	<app-dialogue
+		*ngIf="showCantAccessLocationDialogue"
+		[dialogue]="cantAccessLocationDialogue"
+		(finishedDialogue)="showCantAccessLocationDialogue = false">
+	</app-dialogue>
 </div>
-
-<div class="location clickable2" (click)="handleLocationClick('clickable2')">
-</div>
-
-<div class="location clickable3" (click)="handleLocationClick('clickable3')">
-</div>
-
-<app-dialogue
-	*ngIf="showCantAccessLocationDialogue"
-	[dialogue]="cantAccessLocationDialogue"
-	(finishedDialogue)="showCantAccessLocationDialogue = false">
-</app-dialogue>

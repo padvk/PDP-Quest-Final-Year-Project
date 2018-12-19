@@ -9,7 +9,6 @@ export class MapComponent implements OnInit {
 
 	public showCantAccessLocationDialogue = false;
 	public cantAccessLocationDialogue = [
-		['', 'Your companion has a message for you.'],
 		['Companion', 'We can\'t go to that location yet! Try clicking on another location first.']
 	];
 
