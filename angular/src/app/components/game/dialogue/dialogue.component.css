@@ -1,19 +1,72 @@
-.dialogue-box {
+.container {
     position: absolute;
     bottom: 0;
-    /* width: 100%; */
-    /* max-width: 400px; */
     margin: 20px;
-    padding: 10px;
-    border: 4px solid lightcoral;
-    background-color: black;
+    margin-top: 0px;
 
     width: -moz-calc(100% - 80px);
     width: -webkit-calc(100% - 80px);
     width: -o-calc(100% - 80px);
     width: calc(100% - 80px);
 
+
+    -webkit-animation: fadein 0.2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 0.2s; /* Firefox < 16 */
+        -ms-animation: fadein 0.2s; /* Internet Explorer */
+         -o-animation: fadein 0.2s; /* Opera < 12.1 */
+            animation: fadein 0.2s;
+}
+
+.character-display {
+    position: absolute;
+    top: -250px;
+    width: 250px;
+    height: 250px;
+    background-color: blue;
+}
+
+.character-img {
+    width: 100%;
+    height: 100%;
+}
+
+.dialogue-box {
+    position: relative;
+    padding: 10px;
+    border: 4px solid lightcoral;
+    background-color: black;
+
     font-family: "Bookman Old Style";
     font-size: 36px;
     color: white;
+
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

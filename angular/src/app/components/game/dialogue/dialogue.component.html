@@ -1,3 +1,18 @@
-<div class="dialogue-box" *ngIf="currentIndex < dialogue.length">
-  {{ dialogue[currentIndex] }}
+<div class="container">
+
+	<div *ngIf="dialogue[currentIndex][0] != ''" class="character-display">
+		<img class="character-img" src="/assets/images/characters/{{ dialogue[currentIndex][0] }}.png" alt="Character image">
+	</div>
+
+	<div class="dialogue-box" *ngIf="currentIndex < dialogue.length">
+
+		<ng-template #noCharacter> {{ dialogue[currentIndex][1] }} </ng-template>
+
+		<ng-template #hasCharacter> {{ dialogue[currentIndex][0] + ': ' + dialogue[currentIndex][1] }} </ng-template>
+
+		<ng-content *ngIf="dialogue[currentIndex][0] == ''; then noCharacter; else hasCharacter"></ng-content>
+
+	</div>
+
 </div>
+

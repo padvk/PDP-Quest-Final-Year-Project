@@ -3,6 +3,11 @@
 
 <app-intro
 	*ngIf="state == 'intro'"
-	(nextPageEvent)="goTo('skill-picker')"
+	(nextPageEvent)="goTo('map')"
 ></app-intro>
+
+<app-map
+	*ngIf="state == 'map'"
+	(nextPageEvent)="goTo('map')"
+></app-map>
 

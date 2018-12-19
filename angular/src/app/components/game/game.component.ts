@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
-	public state = 'intro'; // keep as 'home'
+	public state = 'home'; // keep as 'home'
 
 	constructor() { }
 

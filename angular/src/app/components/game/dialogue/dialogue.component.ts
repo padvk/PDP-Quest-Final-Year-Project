@@ -1,17 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter, HostListener, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener, ElementRef } from '@angular/core';
 
 @Component({
 	selector: 'app-dialogue',
 	templateUrl: './dialogue.component.html',
 	styleUrls: ['./dialogue.component.css']
 })
-export class DialogueComponent implements OnInit {
+export class DialogueComponent {
 
-	@Input() dialogue: string[];
-
+	@Input() dialogue: string[][];
 	@Output() finishedDialogue: EventEmitter<any> = new EventEmitter();
-
-	public currentIndex = 0;
 
 	// Listen for clicks
 	@HostListener('document:click', ['$event'])
@@ -19,10 +16,10 @@ export class DialogueComponent implements OnInit {
 		this.handleClick(event);
 	}
 
+	public currentIndex = 0;
+	public currentCharacter = '';
+	
 	constructor(private eRef: ElementRef) { }
-
-	ngOnInit() {
-	}
 
 	/**
 	 * Run when a click is detected
