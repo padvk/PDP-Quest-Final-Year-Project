@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, HostListener, ElementRef } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
 	selector: 'app-dialogue',
@@ -18,6 +19,7 @@ export class DialogueComponent {
 
 	public currentIndex = 0;
 	public currentCharacter = '';
+	public deploypath = environment.deploypath;
 	
 	constructor(private eRef: ElementRef) { }
 

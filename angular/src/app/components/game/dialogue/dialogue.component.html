@@ -1,7 +1,7 @@
 <div class="container">
 
 	<div *ngIf="dialogue[currentIndex][0] != ''" class="character-display">
-		<img class="character-img" src="/assets/images/characters/{{ dialogue[currentIndex][0] }}.png" alt="Character image">
+		<img class="character-img" src="{{deploypath}}/assets/images/characters/{{ dialogue[currentIndex][0] }}.png" alt="Character image">
 	</div>
 
 	<div class="dialogue-box" *ngIf="currentIndex < dialogue.length">

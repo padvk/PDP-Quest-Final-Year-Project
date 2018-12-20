@@ -8,4 +8,8 @@ This project will examine whether presenting a PDP as a game is more likely to e
 
 ## Tech
 
-This repository holds code for a back- and front-end system. The back-end is written in PHP [Laravel](https://laravel.com/) and the front-end is written in [Angular 6](https://angular.io/).
+This repository holds code for a front-end system, which is written in [Angular 6](https://angular.io/).
+
+## Build
+
+On a Linux command line (assuming all software and dependencies are installed), run `ng build --prod --base-href "/ph471/FYP/" --deploy-url "/ph471/FYP/"`
