@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
 	selector: 'app-map',
@@ -13,7 +14,9 @@ export class MapComponent implements OnInit {
 	];
 
 
-	constructor() { }
+	constructor(
+		private stateService: StateService
+	) { }
 
 	ngOnInit() {
 	}
@@ -22,9 +25,9 @@ export class MapComponent implements OnInit {
 	 * Clicking on a location will either take the player to the location,
 	 * or will trigger a companion dialogue.
 	 */
-	public handleLocationClick(location: String) {
+	public handleLocationClick(location: string) {
 		// temp code
-		if (location == 'clickable1') {
+		if (this.stateService.canAccessLocation(location)) {
 			// take player to location 1
 		} else {
 			// player can't access location
