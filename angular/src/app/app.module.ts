@@ -9,6 +9,7 @@ import { GameComponent } from './components/game/game.component';
 import { IntroComponent } from './components/game/intro/intro.component';
 import { MapComponent } from './components/game/map/map.component';
 import { DialogueComponent } from './components/game/dialogue/dialogue.component';
+import { HeaderComponent } from './components/game/header/header.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DialogueComponent } from './components/game/dialogue/dialogue.component
     GameComponent,
     IntroComponent,
     MapComponent,
-    DialogueComponent
+    DialogueComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,32 @@
+<div class="header-bar">
+
+	<div class="container">
+		
+		<span class="inventory primary-text">
+			Inventory
+		</span>
+
+		<div *ngIf="stateService.inventory.carrots > 0" class="item">
+			<div class="icon"></div>
+			Carrots: {{ stateService.inventory.carrots }}
+		</div>
+
+		<div *ngIf="stateService.inventory.gold > 0" class="item">
+			<div class="icon"></div>
+			Gold: {{ stateService.inventory.gold }}
+		</div>
+
+		<div *ngIf="stateService.inventory.wand > 0" class="item">
+			<div class="icon"></div>
+			Wand
+		</div>
+
+	</div>
+
+	<div class="container">
+		<span class="current-task primary-text">
+			{{ stateService.currentTask }}
+		</span>
+	</div>
+
+</div>

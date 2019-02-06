@@ -5,11 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class StateService {
 
-	public currentTask = '';
+	public currentTask = 'Make your way through the forest towards the town of Arkala';
 	public inventory = {
 		carrots: 0,
-		gold: 0,
-		wand: 0
+		gold: 5,
+		wand: 1
 	};
 	public locations = {
 		forest: {name: 'Forest', cost: 0, unlocked: true},
