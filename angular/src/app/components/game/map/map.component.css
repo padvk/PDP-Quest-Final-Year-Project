@@ -13,17 +13,17 @@
     cursor: pointer;
 }
 
-.clickable1 {
+.forest {
     top: 10%;
     left: 15%;
 }
 
-.clickable2 {
+.town {
     top: 45%;
     left: 70%;
 }
 
-.clickable3 {
+.lighthouse {
     top: 70%;
     left: 45%;
 }

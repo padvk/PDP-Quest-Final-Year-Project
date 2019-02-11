@@ -1,17 +1,20 @@
-<app-home *ngIf="state == 'home'" (play)="goTo('intro')">
+<app-home *ngIf="stateService.state == 'home'" (play)="goTo('intro')">
 </app-home>
 
 <app-intro
-	*ngIf="state == 'intro'"
-	(nextPageEvent)="goTo('map')"
+	*ngIf="stateService.state == 'intro'"
+	(nextPageEvent)="goToMap()"
 ></app-intro>
 
-<app-header>
-
-</app-header>
+<app-header></app-header>
 
 <app-map
-	*ngIf="state == 'map'"
-	(nextPageEvent)="goTo('map')"
+	*ngIf="stateService.state == 'map'"
+	(goToLocationEvent)="goToLocation('$event')"
 ></app-map>
+
+<app-location
+	[thisLocation]="stateService.currentLocation"
+	*ngIf="stateService.state == 'location'"
+></app-location>
 

@@ -8,11 +8,12 @@ import { StateService } from 'src/app/services/state.service';
 })
 export class MapComponent implements OnInit {
 
+	@Output() goToLocationEvent: EventEmitter<any> = new EventEmitter();
+
 	public showCantAccessLocationDialogue = false;
 	public cantAccessLocationDialogue = [
 		['Companion', 'We can\'t go to that location yet! Try clicking on another location first.']
 	];
-
 
 	constructor(
 		private stateService: StateService
@@ -26,9 +27,10 @@ export class MapComponent implements OnInit {
 	 * or will trigger a companion dialogue.
 	 */
 	public handleLocationClick(location: string) {
-		// temp code
 		if (this.stateService.canAccessLocation(location)) {
-			// take player to location 1
+			// take player to location
+			this.goToLocationEvent.emit(location);
+
 		} else {
 			// player can't access location
 			this.showCantAccessLocationDialogue = true;

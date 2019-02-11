@@ -10,6 +10,7 @@ import { IntroComponent } from './components/game/intro/intro.component';
 import { MapComponent } from './components/game/map/map.component';
 import { DialogueComponent } from './components/game/dialogue/dialogue.component';
 import { HeaderComponent } from './components/game/header/header.component';
+import { LocationComponent } from './components/game/location/location.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HeaderComponent } from './components/game/header/header.component';
     IntroComponent,
     MapComponent,
     DialogueComponent,
-    HeaderComponent
+    HeaderComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,

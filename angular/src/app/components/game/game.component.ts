@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
 	selector: 'app-game',
@@ -7,15 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
-	public state = 'map'; // keep as 'home'
-
-	constructor() { }
+	constructor(private stateService: StateService) { }
 
 	ngOnInit() {
 	}
 
-	public goTo(page: string) {
-		this.state = page;
+	public goToMap() {
+		this.stateService.state = 'map';
 		console.log('Playing');
+	}
+
+	public goToLocation(location: string) {
+		this.stateService.state = 'location';
+		this.stateService.currentLocation = location;
 	}
 }

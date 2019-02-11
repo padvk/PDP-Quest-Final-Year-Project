@@ -1,0 +1,6 @@
+.location-background {
+    position: absolute;
+    background-color: lightskyblue;
+    width: 100%;
+    height: calc(100% - 100px);
+}
