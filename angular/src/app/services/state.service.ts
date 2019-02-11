@@ -14,15 +14,15 @@ export class StateService {
 	public nextLocation = 'forest';
 
 	public inventory = {
-		carrots: 0,
+		carrots: 10,
 		gold: 0,
 		book: 0
 	};
 
 	public locations = {
-		forest: {name: 'Forest', cost: 0, unlocked: true},
-		town: {name: 'Town Centre', cost: 3, unlocked: false},
-		lighthouse: {name: 'Lighthouse', cost: 7, unlocked: false}
+		forest: {name: 'Forest', cost: 0},
+		town: {name: 'Town Centre', cost: 3},
+		lighthouse: {name: 'Lighthouse', cost: 7}
 	};
 
 	public tasks = [
@@ -57,11 +57,17 @@ export class StateService {
 	}
 
 	public unlockLocation(location: string) {
-		this.locations[location]['unlocked'] = true;
+		if (this.inventory.carrots >= this.locations[location].cost) {
+			this.inventory.carrots -= this.locations[location].cost;
+			this.locations[location].cost = 0;
+			return true;
+		} else {
+			return false;
+		}
 	}
 
-	public canAccessLocation(location: string) {
-		return this.locations[location]['unlocked'];
+	public costOfLocation(location: string) {
+		return this.locations[location]['cost'];
 	}
 
 	/**

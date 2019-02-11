@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { StateService } from 'src/app/services/state.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class MapComponent implements OnInit {
 
 	public showCantAccessLocationDialogue = false;
 	public cantAccessLocationDialogue = [
-		['Companion', 'We can\'t go to that location yet! Try clicking on another location first.']
+		['Kiku', 'We can\'t go to there yet! Try clicking on another location first.']
 	];
 
 	constructor(
@@ -27,11 +27,16 @@ export class MapComponent implements OnInit {
 	 * or will trigger a companion dialogue.
 	 */
 	public handleLocationClick(location: string) {
-		if (this.stateService.canAccessLocation(location)) {
+		const cost = this.stateService.costOfLocation(location);
+
+		if (cost == 0) {
 			// take player to location
 			this.goToLocationEvent.emit(location);
 
-		} else {
+		} else if (cost > 0) {
+			// trade carrots to unlock
+			this.stateService.unlockLocation(location);
+		} else {			
 			// player can't access location
 			this.showCantAccessLocationDialogue = true;
 		}
