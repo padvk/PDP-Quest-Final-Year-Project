@@ -13,4 +13,11 @@
 		[dialogue]="cantAccessLocationDialogue"
 		(finishedDialogue)="showCantAccessLocationDialogue = false">
 	</app-dialogue>
+
+	<app-dialogue
+		*ngIf="showLocationUnlockDialogue"
+		[dialogue]="locationUnlockDialogue"
+		(finishedDialogue)="goToClickedLocation()">
+	</app-dialogue>
+
 </div>

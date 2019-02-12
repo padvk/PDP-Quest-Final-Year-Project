@@ -10,11 +10,10 @@
 
 <app-map
 	*ngIf="stateService.state == 'map'"
-	(goToLocationEvent)="goToLocation('$event')"
+	(goToLocationEvent)="goToLocation($event)"
 ></app-map>
 
 <app-location
-	[location]="stateService.currentLocation"
 	*ngIf="stateService.state == 'location'"
 ></app-location>
 

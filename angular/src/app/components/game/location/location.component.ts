@@ -8,11 +8,12 @@ import { StateService } from 'src/app/services/state.service';
 })
 export class LocationComponent implements OnInit {
 
-	@Input() location: string;
+	public location: string;
 	
 	constructor(private stateService: StateService) { }
 
 	ngOnInit() {
+		this.location = this.stateService.currentLocation;
 	}
 
 }

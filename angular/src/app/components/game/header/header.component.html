@@ -6,6 +6,11 @@
 			Inventory
 		</span>
 
+		<div class="item" (click)="goToMap()">
+			<div class="icon"></div>
+			Map
+		</div>
+
 		<div *ngIf="stateService.inventory.carrots > 0" class="item">
 			<div class="icon"></div>
 			Carrots: {{ stateService.inventory.carrots }}
@@ -16,9 +21,9 @@
 			Gold: {{ stateService.inventory.gold }}
 		</div>
 
-		<div *ngIf="stateService.inventory.wand > 0" class="item">
+		<div *ngIf="stateService.inventory.book > 0" class="item">
 			<div class="icon"></div>
-			Wand
+			Book
 		</div>
 
 	</div>

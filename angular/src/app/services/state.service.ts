@@ -14,7 +14,7 @@ export class StateService {
 	public nextLocation = 'forest';
 
 	public inventory = {
-		carrots: 10,
+		carrots: 0,
 		gold: 0,
 		book: 0
 	};
@@ -44,6 +44,10 @@ export class StateService {
 		Get the special wand from Olah and return it to Omonar
 	*/
 
+	public goToMap() {
+		this.state = 'map';
+	}	
+
 	public getCurrentTask() {
 		return this.tasks[this.currentTask].description;
 	}
@@ -54,6 +58,13 @@ export class StateService {
 
 	public modifyInventory(item: string, amount: number) {
 		this.inventory[item] += amount;
+	}
+
+	public canUnlockLocation(location: string) {
+		if (this.inventory.carrots >= this.locations[location].cost) {
+			return true;
+		}
+		return false;
 	}
 
 	public unlockLocation(location: string) {
@@ -87,6 +98,10 @@ export class StateService {
 			this.currentLocation = '';
 			this.state = 'map';
 			return null;
+
+		} else if (dialogue.name == 'task') {
+			this.currentTask++;
+			return this.getNextDialogue();
 		}
 		else {
 			return dialogue;
@@ -126,6 +141,7 @@ export class StateService {
 		{name: 'Olah', dialogue: 'I can not give you any more information, I’m afraid.'},
 		{name: 'Olah', dialogue: 'However if you make your way to the town centre, I’m sure somebody will be able to give you some useful information.'},
 		{name: 'Kiku', dialogue: 'Thanks. Let’s make our way over to the town centre then.'},
+		{name: 'task'},
 		{name: 'info', dialogue: 'Your horse seems uninterested in moving on.'},
 		{name: 'Kiku', dialogue: 'Oh dear, don’t tell me we were assigned the most stubborn horse in the stables.'},
 		{name: 'Kiku', dialogue: 'He will only take us to locations he is familiar with...'},
@@ -138,7 +154,7 @@ export class StateService {
 
 		{name: 'map', nextLocation: 'town'},
 
-
+		{name: 'Kiku', dialogue: 'Dialogue in town.'},
 
 	];
 
