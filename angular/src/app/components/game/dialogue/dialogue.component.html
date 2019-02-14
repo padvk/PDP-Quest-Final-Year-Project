@@ -6,9 +6,9 @@
 
 	<div class="dialogue-box" *ngIf="!finished">
 
-		<ng-template #noCharacter> {{ currentDialogue }} </ng-template>
+		<ng-template #noCharacter> {{ displayedDialogue }} </ng-template>
 
-		<ng-template #hasCharacter> {{ currentCharacter + ': ' + currentDialogue }} </ng-template>
+		<ng-template #hasCharacter> {{ currentCharacter + ': ' + displayedDialogue }} </ng-template>
 
 		<ng-content *ngIf="currentCharacter == 'info'; then noCharacter; else hasCharacter"></ng-content>
 

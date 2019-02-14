@@ -10,7 +10,7 @@ export class StateService {
 	public currentTask = 0;
 	public currentLocation = '';
 	
-	public dialogueIndex = 20;
+	public dialogueIndex = 0;
 	public nextLocation = 'forest';
 
 	public inventory = {
@@ -171,7 +171,6 @@ export class StateService {
 		{name: 'Kiku', dialogue: 'Hey, why don’t we knock on some houses? Maybe they could tell us more about what’s going on.'},
 		{name: 'Kiku', dialogue: 'Let’s try this house. I hope someone’s home.'},
 		{name: 'info', dialogue: '*Knock knock*'},
-		{name: 'Kiku', dialogue: ''},
 		{name: 'Julissa', dialogue: 'Oh, hey you two.'},
 		{name: 'Julissa', dialogue: 'I’m not sure I’ve seen your faces around here before. Are you from here?'},
 		{name: 'Kiku', dialogue: 'Sorry to bother you. We have travelled from Orilon to restore peace to this town.'},
@@ -196,6 +195,7 @@ export class StateService {
 		{name: 'Julissa', dialogue: 'If I give you some gold to go to the market and fetch me a bunch of carrots then I will let you keep half of them.'},
 		{name: 'Julissa', dialogue: 'Anything to avoid leaving the house.'},
 		{name: 'Kiku', dialogue: 'That would be a massive help, thank you.'},
+		{name: 'task'},
 		{name: 'inventory', item: 'gold', modify: 5},
 		{name: 'info', dialogue: 'You received 5 gold.'},
 

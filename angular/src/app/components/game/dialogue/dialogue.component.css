@@ -1,15 +1,10 @@
 .container {
     position: absolute;
+    width: 100%;
     bottom: 0;
-    margin: 20px;
+    margin: 0 20px;
     margin-top: 0px;
     cursor: pointer;
-
-    width: -moz-calc(100% - 80px);
-    width: -webkit-calc(100% - 80px);
-    width: -o-calc(100% - 80px);
-    width: calc(100% - 80px);
-
 
     -webkit-animation: fadein 0.2s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 0.2s; /* Firefox < 16 */
@@ -20,7 +15,8 @@
 
 .character-display {
     position: absolute;
-    top: -300px;
+    /* top: -190px; */
+    bottom: 0px;
     width: 300px;
     background-color: blue;
 }
@@ -32,15 +28,24 @@
 }
 
 .dialogue-box {
+    /* width: -moz-calc(100% - 380px);
+    width: -webkit-calc(100% - 380px);
+    width: -o-calc(100% - 380px);
+    width: calc(100% - 380px); */
+    width: 70%;
+
     position: relative;
+    left: 320px;
+    bottom: 20px;
+    min-height: 74px;
     padding: 10px;
-    border: 4px solid lightcoral;
     background-color: black;
+    border: 4px solid #981717;
+    border-radius: 15px;
 
     font-family: "Bookman Old Style";
-    font-size: 36px;
+    font-size: 32px;
     color: white;
-
 }
 
 @keyframes fadein {

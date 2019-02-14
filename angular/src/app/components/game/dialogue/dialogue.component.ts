@@ -20,7 +20,12 @@ export class DialogueComponent {
 
 	private finished = false;
 	private currentIndex = 0;
-	public currentDialogue = '';
+
+	private currentDialogue = '';
+	public displayedDialogue = '';
+	private dialogueChar = 0;
+	private dialogueSpeed = 40;
+
 	public currentCharacter = '';
 	public deploypath = environment.deploypath;
 	
@@ -31,7 +36,7 @@ export class DialogueComponent {
 	ngOnInit() {
 		if (this.dialogue) {
 			this.currentCharacter = this.dialogue[0][0];
-			this.currentDialogue = this.dialogue[0][1];
+			this.setNextDialogue(this.dialogue[0][1]);
 		} else {
 			this.continueStory();
 		}
@@ -61,7 +66,7 @@ export class DialogueComponent {
 			this.endDialogue();
 		} else {
 			this.currentCharacter = this.dialogue[this.currentIndex][0];
-			this.currentDialogue = this.dialogue[this.currentIndex][1];
+			this.setNextDialogue(this.dialogue[this.currentIndex][1]);
 		}
 	}
 
@@ -77,13 +82,29 @@ export class DialogueComponent {
 
 		} else {
 			this.currentCharacter = nextDialogue['name'];
-			this.currentDialogue = nextDialogue['dialogue'];
+			this.setNextDialogue(nextDialogue['dialogue']);
 		}
 	}
 
 	private endDialogue() {
 		this.finished = true;
 		this.finishedDialogue.emit();
+	}
+
+	private typingText() {
+		if (this.dialogueChar < this.currentDialogue.length) {
+			this.displayedDialogue += this.currentDialogue.charAt(this.dialogueChar);
+			this.dialogueChar++;
+			setTimeout(() => { this.typingText() }, this.dialogueSpeed);
+		}
+
+	}	
+
+	private setNextDialogue(dialogue: string) {
+		this.currentDialogue = dialogue;
+		this.displayedDialogue = '';
+		this.dialogueChar = 0;
+		this.typingText();
 	}
 
 }
