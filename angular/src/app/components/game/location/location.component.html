@@ -1,5 +1,5 @@
-<div class="location-background">
-
+<div class="location-background" [style.background-image]="'url(' + image + ')'">
+	
 	<app-dialogue *ngIf="location == stateService.nextLocation">
 		
 	</app-dialogue>

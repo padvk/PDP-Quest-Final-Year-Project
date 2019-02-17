@@ -18,7 +18,7 @@ export class DialogueComponent {
 		this.handleClick(event);
 	}
 
-	private finished = false;
+	public finished = false;
 	private currentIndex = 0;
 
 	private currentDialogue = '';
@@ -31,7 +31,7 @@ export class DialogueComponent {
 	
 	constructor(
 		private eRef: ElementRef,
-		private stateService: StateService) { }
+		public stateService: StateService) { }
 
 	ngOnInit() {
 		if (this.dialogue) {

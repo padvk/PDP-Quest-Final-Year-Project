@@ -8,7 +8,7 @@ import { StateService } from 'src/app/services/state.service';
 })
 export class GameComponent implements OnInit {
 
-	constructor(private stateService: StateService) { }
+	constructor(public stateService: StateService) { }
 
 	ngOnInit() {
 	}

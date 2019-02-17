@@ -199,7 +199,7 @@ export class StateService {
 		{name: 'inventory', item: 'gold', modify: 5},
 		{name: 'info', dialogue: 'You received 5 gold.'},
 
-		{name: 'location', location: 'town-market'},
+		{name: 'location', location: 'market'},
 		{name: 'Shopkeeper', dialogue: 'Hi there.'},
 		{name: 'Kiku', dialogue: 'We would like to buy a bunch of carrots please. Have you got many left?'},
 		{name: 'Shopkeeper', dialogue: 'I’m down to my last bunch. How about 10 carrots for 8 gold?'},

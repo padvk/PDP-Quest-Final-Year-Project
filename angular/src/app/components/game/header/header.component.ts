@@ -9,7 +9,7 @@ import { StateService } from 'src/app/services/state.service';
 export class HeaderComponent implements OnInit {
 
 	constructor(
-		private stateService: StateService
+		public stateService: StateService
 	) { }
 
 	ngOnInit() {
