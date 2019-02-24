@@ -6,7 +6,7 @@
 	(nextPageEvent)="goToMap()"
 ></app-intro>
 
-<app-header></app-header>
+<app-header *ngIf="stateService.state != 'home'"></app-header>
 
 <app-map
 	*ngIf="stateService.state == 'map'"

@@ -6,27 +6,41 @@ import { MainService } from 'src/app/services/main.service';
 	templateUrl: './home.component.html',
 	styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
 	@Output() play: EventEmitter<any> = new EventEmitter();
+
+	public password = '';
 
 	constructor(
 		private mainService: MainService
 	) { }
 
-	ngOnInit() {
+	public onPlayClick(part: number) {
+		this.mainService.auth(part, this.password).subscribe(
+			(data: any) => {
+				console.log(data.data);
+				if (data.authed) {
+					this.play.emit();
+				} else {
+					alert('Your password is not recognised for part ' + part + '.');
+				}
+			},
+			error => {
+				console.log(error);
+			}
+		);
 	}
 
-	public onPlayClick() {
-		this.play.emit();
-		// this.mainService.callEndpoint().subscribe(
-		// 	(data: any) => {
-		// 		console.log(data);
-		// 	},
-		// 	error => {
-		// 		console.log(error);
-		// 	}
-		// );
+	public testEnd() {
+		this.mainService.end().subscribe(
+			(data: any) => {
+				console.log(data.data);
+			},
+			error => {
+				console.log(error);
+			}
+		);
 	}
 
 }

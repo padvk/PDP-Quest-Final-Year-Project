@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class StateService {
 
-	public state = 'map'; // keep as 'home'. Can also be 'map', 'intro' or 'location
+	public state = 'home'; // keep as 'home'. Can also be 'map', 'intro' or 'location
 	
 	public currentTask = 0;
 	public currentLocation = '';
