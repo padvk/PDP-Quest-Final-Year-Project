@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class StateService {
 
-	public state = 'home'; // keep as 'home'. Can also be 'map', 'intro' or 'location
+	public state = 'map'; // keep as 'home'. Can also be 'map', 'intro' or 'location
 	
 	public currentTask = 0;
 	public currentLocation = '';
@@ -25,6 +26,10 @@ export class StateService {
 		lighthouse: {name: 'Lighthouse', cost: 7}
 	};
 
+	public characters = [
+		'Kiku', 'Olah', 'Julissa', 'Shopkeeper', 'Omonar'
+	];
+
 	public tasks = [
 		{location: 'forest', description: 'Make your way through the forest towards the town of Arkala'},
 		{location: 'town', description: 'Find out more about the mystery in the town centre'},
@@ -33,7 +38,9 @@ export class StateService {
 		{location: 'forest', description: 'Get the spell book from Olah and bring it back to Omonar'}
 	];
 
-	constructor() { }
+	private dialogueSounds = [];
+
+	constructor() {}
 
 	public goToMap() {
 		this.state = 'map';
@@ -111,6 +118,25 @@ export class StateService {
 		}, (100));
 	}
 
+	public loadSounds() {
+		for (let i = 0; i < this.characters.length; i++) {
+			const thisAudio = new Audio();
+			const thisCharacter = this.characters[i];
+			thisAudio.src = environment.deploypath + '/assets/audio/dialogue/' + thisCharacter + '.ogg';
+			thisAudio.loop = true;
+			thisAudio.load();
+			this.dialogueSounds[thisCharacter] = thisAudio;
+		}
+	}
+
+	public playDialogueSound(character: string) {
+		this.dialogueSounds[character].play();
+	}
+
+	public stopDialogueSound(character: string) {
+		this.dialogueSounds[character].pause();
+	}
+
 	/**
 	 * Game events are structured as follows:
 	 *  - Event with name 'task' indicates that the next task should be shown
@@ -122,7 +148,7 @@ export class StateService {
 	 */
 
 	// Dialogue and events for part1
-	public part1initialLocation = 'intro';
+	public initialLocations = ['intro', 'market', 'forest', 'lighthouse'];
 	/** ['Kiku', 'Hey...'],
 		['Kiku', 'Oh hey, you’re finally awake!'],
 		['Kiku', 'You’ve been asleep for nearly 13 hours… I guess knights really do love a good nap huh.'],

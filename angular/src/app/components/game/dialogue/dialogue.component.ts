@@ -23,6 +23,7 @@ export class DialogueComponent {
 
 	private currentDialogue = '';
 	public displayedDialogue = '';
+	public finishedTyping = false;
 	private dialogueChar = 0;
 	private dialogueSpeed = 40;
 
@@ -35,8 +36,7 @@ export class DialogueComponent {
 
 	ngOnInit() {
 		if (this.dialogue) {
-			this.currentCharacter = this.dialogue[0][0];
-			this.setNextDialogue(this.dialogue[0][1]);
+			this.setNextDialogue(this.dialogue[0][0], this.dialogue[0][1]);
 		} else {
 			this.continueStory();
 		}
@@ -50,6 +50,8 @@ export class DialogueComponent {
 
 			if (this.dialogue) {
 				this.showProvidedDialogue();
+			} else if (!this.finishedTyping) {
+				this.skipTyping();
 			} else {
 				this.continueStory();
 			}
@@ -65,24 +67,24 @@ export class DialogueComponent {
 		if (this.currentIndex >= this.dialogue.length) {
 			this.endDialogue();
 		} else {
-			this.currentCharacter = this.dialogue[this.currentIndex][0];
-			this.setNextDialogue(this.dialogue[this.currentIndex][1]);
+			this.setNextDialogue(this.dialogue[this.currentIndex][0], this.dialogue[this.currentIndex][1]);
 		}
 	}
 
 	private continueStory() {
 		const nextDialogue = this.stateService.getNextDialogue();
+		this.finishedTyping = false;
 		
 		if (!nextDialogue) {
 			this.endDialogue();
 		
 		} else if (nextDialogue['name'] == 'inventory') {
+			// TODO: think about moving this to stateService
 			this.stateService.modifyInventory(nextDialogue['item'], nextDialogue['modify']);
 			this.continueStory();
 
 		} else {
-			this.currentCharacter = nextDialogue['name'];
-			this.setNextDialogue(nextDialogue['dialogue']);
+			this.setNextDialogue(nextDialogue['name'], nextDialogue['dialogue']);
 		}
 	}
 
@@ -95,16 +97,45 @@ export class DialogueComponent {
 		if (this.dialogueChar < this.currentDialogue.length) {
 			this.displayedDialogue += this.currentDialogue.charAt(this.dialogueChar);
 			this.dialogueChar++;
-			setTimeout(() => { this.typingText() }, this.dialogueSpeed);
+			setTimeout(() => {
+				if (!this.finishedTyping) {
+					this.typingText()
+				}
+			}, this.dialogueSpeed);
+
+		} else {
+			this.finishedTyping = true;
+			this.stopDialogueSound(this.currentCharacter);
 		}
 
 	}	
 
-	private setNextDialogue(dialogue: string) {
+	private skipTyping() {
+		this.finishedTyping = true;
+		this.displayedDialogue = this.currentDialogue;
+		this.dialogueChar = this.currentDialogue.length;
+		this.stopDialogueSound(this.currentCharacter);
+	}
+
+	private setNextDialogue(character: string, dialogue: string) {
 		this.currentDialogue = dialogue;
+		this.currentCharacter = character;
 		this.displayedDialogue = '';
 		this.dialogueChar = 0;
 		this.typingText();
+		this.playDialogueSound(character);
+	}
+
+	private playDialogueSound(character: string) {
+		if (character != 'info') {
+			this.stateService.playDialogueSound(character);
+		}
+	}
+
+	private stopDialogueSound(character: string) {
+		if (character != 'info') {
+			this.stateService.stopDialogueSound(character);
+		}
 	}
 
 }

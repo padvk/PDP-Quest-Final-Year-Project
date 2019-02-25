@@ -12,6 +12,8 @@
 
 		<ng-content *ngIf="currentCharacter == 'info'; then noCharacter; else hasCharacter"></ng-content>
 
+		<span class="blinking" *ngIf="finishedTyping">&rArr;</span>
+
 	</div>
 
 </div>
