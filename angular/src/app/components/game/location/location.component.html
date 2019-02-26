@@ -1,7 +1,15 @@
 <div class="location-background" [style.background-image]="'url(' + image + ')'">
+
+	<ng-container *ngIf="location == 'town'">
+
+			<div class="clickable market" (click)="handleBackgroundClick('market')">
+			</div>
+
+	</ng-container>
 	
-	<app-dialogue *ngIf="location == stateService.nextLocation">
-		
+	<app-dialogue
+		*ngIf="dialogueActive"
+		(finishedDialogue)="this.dialogueActive=false">
 	</app-dialogue>
 
 </div>

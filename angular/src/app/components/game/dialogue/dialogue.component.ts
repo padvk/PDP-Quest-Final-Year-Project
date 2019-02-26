@@ -78,10 +78,8 @@ export class DialogueComponent {
 		if (!nextDialogue) {
 			this.endDialogue();
 		
-		} else if (nextDialogue['name'] == 'inventory') {
-			// TODO: think about moving this to stateService
-			this.stateService.modifyInventory(nextDialogue['item'], nextDialogue['modify']);
-			this.continueStory();
+		} else if (nextDialogue['name'] == 'endDialogue') {
+			this.finishedDialogue.emit();
 
 		} else {
 			this.setNextDialogue(nextDialogue['name'], nextDialogue['dialogue']);

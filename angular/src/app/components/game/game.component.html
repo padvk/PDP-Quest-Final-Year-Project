@@ -1,4 +1,4 @@
-<app-home *ngIf="stateService.state == 'home'" (play)="goTo('intro')">
+<app-home *ngIf="stateService.state == 'home'" (play)="play($event)">
 </app-home>
 
 <app-intro

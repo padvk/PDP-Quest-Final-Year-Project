@@ -14,6 +14,11 @@ export class GameComponent implements OnInit {
 		this.stateService.loadSounds();
 	}
 
+	public play(part: number) {
+		const initialLocation = this.stateService.initialiseGame(part);
+		this.goToLocation(initialLocation);
+	}
+
 	public goToMap() {
 		this.stateService.state = 'map';
 		console.log('Playing');

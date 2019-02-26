@@ -7,3 +7,17 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.clickable {
+    z-index: 99;
+    position: absolute;
+    background-color: red;
+    cursor: pointer;
+}
+
+.market {
+    top: 76%;
+    left: 55%;
+    width: 10%;
+    height: 12%;
+}

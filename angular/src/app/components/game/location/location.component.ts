@@ -11,6 +11,7 @@ export class LocationComponent implements OnInit {
 
 	public location: string;
 	public image: string;
+	public dialogueActive: boolean;
 	public deploypath = environment.deploypath;
 	
 	constructor(public stateService: StateService) { }
@@ -18,6 +19,42 @@ export class LocationComponent implements OnInit {
 	ngOnInit() {
 		this.location = this.stateService.currentLocation;
 		this.image = this.deploypath + '/assets/images/locations/' + this.location + '.png';
+		this.dialogueActive = (this.location == this.stateService.nextLocation);
+
+		this.stateService.playLocationSound(this.location);
+	}
+
+	ngOnDestroy() {
+		this.stateService.stopLocationSound(this.location);
+	}
+	
+	public handleBackgroundClick(item: string) {
+		if (this.dialogueActive) {
+			switch(this.location) {
+				case 'forest':
+					this.handleForestClick(item);
+					break;
+	
+				case 'town':
+					this.handleTownClick(item);
+					break;
+			}
+		}
+		
+	}
+
+	private handleForestClick(item: string) {
+
+	}
+
+	private handleTownClick(item: string) {
+		switch(item) {
+			case 'market':
+				// clicked on the market in the town
+				console.log('asdf');
+				break;
+		}
+
 	}
 
 }

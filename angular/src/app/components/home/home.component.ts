@@ -21,9 +21,11 @@ export class HomeComponent {
 			(data: any) => {
 				console.log(data.data);
 				if (data.authed) {
-					this.play.emit();
+					this.play.emit(part);
 				} else {
-					alert('Your password is not recognised for part ' + part + '.');
+					this.play.emit(part);
+					// TODO: edit this
+					// alert('Your password is not recognised for part ' + part + '.');
 				}
 			},
 			error => {
