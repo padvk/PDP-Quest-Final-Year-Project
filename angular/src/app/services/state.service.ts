@@ -300,8 +300,29 @@ export class StateService {
 			unlockedLocations: ['town'],
 			currentTask: 0,
 			dialogue: [
-				{name: 'Shopkeeper', dialogue: 'DAB DAB DAB'},
-				{name: 'Olah', dialogue: 'Hello! I\'m not meant to be in this bit lol'},
+				{name: 'Shopkeeper', dialogue: 'Thanks, you two. You two came up with some really interesting ideas.'},
+				{name: 'Shopkeeper', dialogue: 'I’ll be sure to put one of these on my news stand. Good work!'},
+				{name: 'Shopkeeper', dialogue: 'As promised, here’s your carrots.'},
+				{name: 'Kiku', dialogue: 'Great! Glad you like our ideas.'},
+				{name: 'inventory', item: 'carrots', modify: 10},
+				{name: 'info', dialogue: 'You received 10 carrots.'},
+				{name: 'Shopkeeper', dialogue: 'And while you were giving your presentation, I remembered something that might help you in your quest.'},
+				{name: 'Shopkeeper', dialogue: 'There is a wizard who lives in the lighthouse not too far North (tbc) from here. Rumour has it that he is preparing some kind of spell to banish the witch.'},
+				{name: 'Shopkeeper', dialogue: 'I might be worth you paying him a visit.'},
+				{name: 'Kiku', dialogue: 'Thanks for that, we’ll be sure to drop by to see what he’s up to.'},
+				{name: 'Kiku', dialogue: 'We’ll be off now.'},
+				{name: 'Shopkeeper', dialogue: 'Good luck!'},
+				{name: 'location', location: 'town'},
+
+				{name: 'Julissa', dialogue: 'Oh you’re back! What took you so long?'},
+				{name: 'Kiku', dialogue: 'We got caught up in a conversation with the shopkeeper.'},
+				{name: 'Julissa', dialogue: 'Of course. It can be easy to get lost in conversation with that man sometimes.'},
+				{name: 'Julissa', dialogue: 'Anyway, here’s your half. You got me the perfect amount of carrots I need to prepare dinner. Thanks for helping me out.'},
+				{name: 'Kiku', dialogue: 'No problem. We should have enough food now for us to continue in our quest.'},
+				{name: 'Kiku', dialogue: 'Nice meeting you, Julissa.'},
+				{name: 'Julissa', dialogue: 'See you around!'},
+				{name: 'map', nextLocation: 'lighthouse'},
+
 			]
 		
 		},
