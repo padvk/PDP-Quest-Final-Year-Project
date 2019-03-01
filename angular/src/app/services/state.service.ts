@@ -28,10 +28,6 @@ export class StateService {
 		lighthouse: {name: 'Lighthouse', cost: 7},
 	};
 
-	public characters = [
-		'Kiku', 'Olah', 'Julissa', 'Shopkeeper', 'Omonar'
-	];
-
 	public tasks = [
 		{location: 'forest', description: 'Make your way through the forest towards the town of Arkala'},
 		{location: 'town', description: 'Uncover more of the mystery in the town centre'},
@@ -40,8 +36,17 @@ export class StateService {
 		{location: 'forest', description: 'Get the spell book from Olah and bring it back to Omonar'}
 	];
 
+	public characters = [
+		'Kiku', 'Olah', 'Julissa', 'Shopkeeper', 'Omonar'
+	];
+
+	public events = [
+		'map', 'carrot', 'gold', 'book', 'lamp', 'clocktower'
+	];
+
 	private dialogueSounds = [];
 	private locationSounds = [];
+	private eventSounds = [];
 
 	constructor() {}
 
@@ -59,7 +64,15 @@ export class StateService {
 			this.locations[partData['unlockedLocations'][i]].cost = 0;
 		}
 
-		return partData['initialLocation'];
+		// return partData['initialLocation'];
+		this.SKIPSTORY(65);
+		return 'town';
+	}
+
+	public SKIPSTORY(number: number) {
+		for (let i = 0; i < number; i++) {
+			this.getNextDialogue();
+		}
 	}
 
 	public goToMap() {
@@ -160,30 +173,37 @@ export class StateService {
 			this.locationSounds[location] = locationSound;
 		}
 
-		// load event sounds (inventory, dialogue and background elements)
-	}
-
-	public playDialogueSound(character: string) {
-		if (this.dialogueSounds[character]) {
-			this.dialogueSounds[character].play();
+		for (let event in this.events) {
+			const eventSound = new Audio();
+			const thisEvent = this.events[event];
+			eventSound.src = environment.deploypath + '/assets/audio/events/' + thisEvent + '.ogg';
+			eventSound.loop = false;
+			eventSound.load();
+			this.eventSounds[thisEvent] = eventSound;
 		}
 	}
 
-	public stopDialogueSound(character: string) {
-		if (this.dialogueSounds[character]) {
-			this.dialogueSounds[character].pause();
+	public playSound(type: string, item: string) {
+		const soundsArray = this.getSoundArray(type);
+
+		if (soundsArray[item]) {
+			soundsArray[item].play();
 		}
 	}
 
-	public playLocationSound(character: string) {
-		if (this.locationSounds[character]) {
-			this.locationSounds[character].play();
+	public stopSound(type: string, item: string) {
+		const soundsArray = this.getSoundArray(type);
+
+		if (soundsArray[item]) {
+			soundsArray[item].pause();
 		}
 	}
 
-	public stopLocationSound(character: string) {
-		if (this.locationSounds[character]) {
-			this.locationSounds[character].pause();
+	private getSoundArray(type: string) {
+		switch(type) {
+			case 'location': return this.locationSounds;
+			case 'character': return this.dialogueSounds;
+			case 'event': return this.eventSounds;
 		}
 	}
 

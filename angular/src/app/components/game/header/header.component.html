@@ -11,17 +11,17 @@
 			Map
 		</div>
 
-		<div *ngIf="stateService.inventory.carrots > 0" class="item">
+		<div *ngIf="stateService.inventory.carrots > 0" (click)="itemClick('carrot')" class="item">
 			<div class="icon"></div>
 			Carrots: {{ stateService.inventory.carrots }}
 		</div>
 
-		<div *ngIf="stateService.inventory.gold > 0" class="item">
+		<div *ngIf="stateService.inventory.gold > 0" (click)="itemClick('gold')" class="item">
 			<div class="icon"></div>
 			Gold: {{ stateService.inventory.gold }}
 		</div>
 
-		<div *ngIf="stateService.inventory.book > 0" class="item">
+		<div *ngIf="stateService.inventory.book > 0" (click)="itemClick('book')" class="item">
 			<div class="icon"></div>
 			Book
 		</div>

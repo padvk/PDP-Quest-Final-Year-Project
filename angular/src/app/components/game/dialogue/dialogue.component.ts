@@ -72,7 +72,6 @@ export class DialogueComponent {
 	}
 
 	private continueStory() {
-		// debugger;
 		const nextDialogue = this.stateService.getNextDialogue();
 		this.finishedTyping = false;
 		
@@ -128,13 +127,13 @@ export class DialogueComponent {
 
 	private playDialogueSound(character: string) {
 		if (character != 'info') {
-			this.stateService.playDialogueSound(character);
+			this.stateService.playSound('character', character);
 		}
 	}
 
 	private stopDialogueSound(character: string) {
 		if (character != 'info') {
-			this.stateService.stopDialogueSound(character);
+			this.stateService.stopSound('character', character);
 		}
 	}
 

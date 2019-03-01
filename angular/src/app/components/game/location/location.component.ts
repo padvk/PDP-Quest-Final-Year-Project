@@ -21,11 +21,11 @@ export class LocationComponent implements OnInit {
 		this.image = this.deploypath + '/assets/images/locations/' + this.location + '.png';
 		this.dialogueActive = (this.location == this.stateService.nextLocation);
 
-		this.stateService.playLocationSound(this.location);
+		this.stateService.playSound('location', this.location);
 	}
 
 	ngOnDestroy() {
-		this.stateService.stopLocationSound(this.location);
+		this.stateService.stopSound('location', this.location);
 	}
 	
 	public handleBackgroundClick(item: string) {
@@ -48,9 +48,10 @@ export class LocationComponent implements OnInit {
 	private handleTownClick(item: string) {
 		switch(item) {
 			case 'market':
-				// clicked on the market in the town
-				console.log('asdf');
 				this.stateService.changeLocation('market');
+				break;
+			case 'lamp':
+				this.stateService.playSound('event', 'lamp');
 				break;
 		}
 

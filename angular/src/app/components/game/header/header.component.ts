@@ -16,7 +16,12 @@ export class HeaderComponent implements OnInit {
 	}
 
 	public goToMap() {
+		this.stateService.playSound('event', 'map');
 		this.stateService.goToMap();
+	}
+
+	public itemClick(item: string) {
+		this.stateService.playSound('event', item);
 	}
 
 }
