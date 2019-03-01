@@ -33,7 +33,8 @@ export class StateService {
 		{location: 'town', description: 'Uncover more of the mystery in the town centre'},
 		{location: 'town', description: 'Find the market and fetch some carrots from the market for Julissa'},
 		{location: 'lighthouse', description: 'Visit the wizard in the lighthouse'},
-		{location: 'forest', description: 'Get the spell book from Olah and bring it back to Omonar'}
+		{location: 'forest', description: 'Get the spell book from Olah and bring it back to Omonar'},
+		{location: 'lighthouse', description: 'Assist the Wizard with his literature review.'},
 	];
 
 	public characters = [
@@ -329,7 +330,7 @@ export class StateService {
 			gold: 5,
 			book: 0,
 			unlockedLocations: ['town'],
-			currentTask: 0,
+			currentTask: 2,
 			dialogue: [
 				{name: 'Shopkeeper', dialogue: 'Thanks, you two. You two came up with some really interesting ideas.'},
 				{name: 'Shopkeeper', dialogue: 'I’ll be sure to put one of these on my news stand. Good work!'},
