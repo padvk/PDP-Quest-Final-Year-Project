@@ -1,20 +1,26 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MainService } from 'src/app/services/main.service';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
 	styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
 
 	@Output() play: EventEmitter<any> = new EventEmitter();
 
 	public password = '';
 
 	constructor(
-		private mainService: MainService
+		private mainService: MainService,
+		private stateService: StateService
 	) { }
+
+	ngOnInit() {
+		this.stateService.loadSounds();
+	}
 
 	public onPlayClick(part: number) {
 		this.play.emit(part);

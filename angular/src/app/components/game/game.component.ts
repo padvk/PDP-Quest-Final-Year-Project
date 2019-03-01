@@ -11,7 +11,6 @@ export class GameComponent implements OnInit {
 	constructor(public stateService: StateService) { }
 
 	ngOnInit() {
-		this.stateService.loadSounds();
 	}
 
 	public play(part: number) {

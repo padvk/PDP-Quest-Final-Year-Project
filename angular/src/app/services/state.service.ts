@@ -159,6 +159,8 @@ export class StateService {
 			locationSound.load();
 			this.locationSounds[location] = locationSound;
 		}
+
+		// load event sounds (inventory, dialogue and background elements)
 	}
 
 	public playDialogueSound(character: string) {
