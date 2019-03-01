@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
 })
 export class StateService {
 
-	public state = 'home'; // keep as 'home'. Can also be 'map', 'intro' or 'location
+	public state = 'home'; // keep as 'home'. Can also be 'map' or 'location
 	public currentPartIndex;
 	
 	public currentTask = 0;
@@ -103,7 +103,6 @@ export class StateService {
 	 * Return the next piece of dialogue to display
 	 */
 	public getNextDialogue() {
-		debugger;
 		const dialogue = this.parts[this.currentPartIndex].dialogue[this.dialogueIndex];
 		this.dialogueIndex++;
 
@@ -135,7 +134,7 @@ export class StateService {
 		}
 	}
 
-	private changeLocation(location: string) {
+	public changeLocation(location: string) {
 		this.currentLocation = this.nextLocation = location;
 		this.state = '';
 		setTimeout(() => {	
@@ -163,19 +162,27 @@ export class StateService {
 	}
 
 	public playDialogueSound(character: string) {
-		this.dialogueSounds[character].play();
+		if (this.dialogueSounds[character]) {
+			this.dialogueSounds[character].play();
+		}
 	}
 
 	public stopDialogueSound(character: string) {
-		this.dialogueSounds[character].pause();
+		if (this.dialogueSounds[character]) {
+			this.dialogueSounds[character].pause();
+		}
 	}
 
 	public playLocationSound(character: string) {
-		this.locationSounds[character].play();
+		if (this.locationSounds[character]) {
+			this.locationSounds[character].play();
+		}
 	}
 
 	public stopLocationSound(character: string) {
-		this.locationSounds[character].pause();
+		if (this.locationSounds[character]) {
+			this.locationSounds[character].pause();
+		}
 	}
 
 	/**
@@ -188,28 +195,30 @@ export class StateService {
 	 *  - Other events are simply dialogue from a character
 	 */
 
-	// Dialogue and events for part1
-	public initialLocations = ['intro', 'market', 'forest', 'lighthouse'];
-	/** ['Kiku', 'Hey...'],
-		['Kiku', 'Oh hey, you’re finally awake!'],
-		['Kiku', 'You’ve been asleep for nearly 13 hours… I guess knights really do love a good nap huh.'],
-		['Kiku', 'Sorry, where are my manners... I’m Kiku, one of the king’s trusted faries.'],
-		['Kiku', 'I’m sure you are aware that the residents of Arkala, the town not too far North from here, have gone silent. Nobody has heard a word from any of them in weeks.'],
-		['Kiku', 'Word has it that a curse has been cast over the town, but we do not know much more than that.'],
-		['Kiku', 'So, the king has decided to step in to find a cause for this mysterious silence, and has assigned you to journey over to the town to see what’s going on...'],
-		['Kiku', '... and assigned me as your companion! I will help guide you on your way.'],
-		['Kiku', 'I’ll give you some time to prepare, we will begin our journey on horseback as soon as possible!'],
-		['Kiku', 'And don’t you dare fall back asleep...'],
-		['map', 'forest'],*/
+	//public initialLocations = ['intro', 'market', 'forest', 'lighthouse'];
+	
+	// Dialogue and events for each part
 	private parts = [
 		{
-			initialLocation: 'forest',
+			initialLocation: 'intro',
 			carrots: 0,
 			gold: 0,
 			book: 0,
 			unlockedLocations: [],
 			currentTask: 0,
 			dialogue: [
+				{name: 'Kiku', dialogue: 'Hey....'},
+				{name: 'Kiku', dialogue: 'Oh hey, you’re finally awake!'},
+				{name: 'Kiku', dialogue: 'You’ve been asleep for nearly 13 hours… I guess knights really do love a good nap huh.'},
+				{name: 'Kiku', dialogue: 'Sorry, where are my manners… I’m Kiku, one of the king’s trusted faries.'},
+				{name: 'Kiku', dialogue: 'I’m sure you are aware that the residents of Arkala, the town not too far North from here, has gone silent. Nobody has heard a word from any of its residents in weeks.'},
+				{name: 'Kiku', dialogue: 'Word has it that a curse has been cast over the town, but we do not know much more than that.'},
+				{name: 'Kiku', dialogue: 'So, the king has decided to step in to find a cause for this mysterious silence, and has assigned you to journey over to the town to see what’s going on...'},
+				{name: 'Kiku', dialogue: '“... and assigned me as your companion! I will help guide you on your way.'},
+				{name: 'Kiku', dialogue: 'I’ll give you some time to prepare, we will begin our journey on horseback as soon as possible!'},
+				{name: 'Kiku', dialogue: 'And don’t you dare fall back asleep...'},
+				{name: 'map', nextLocation: 'forest'},
+
 				{name: 'Kiku', dialogue: 'This forest is so eerie… I feel like we’re being watched.'},
 				{name: 'Olah', dialogue: 'Hello!'},
 				{name: 'Kiku', dialogue: 'Ah! Who said that. I told you we weren’t alone.'},

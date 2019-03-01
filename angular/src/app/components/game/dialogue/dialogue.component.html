@@ -4,7 +4,7 @@
 		<img class="character-img" src="{{deploypath}}/assets/images/characters/{{ currentCharacter }}.png" alt="Character image">
 	</div>
 
-	<div class="dialogue-box" *ngIf="!finished">
+	<div class="dialogue-box" [class.info]="currentCharacter == 'info'" *ngIf="!finished">
 
 		<ng-template #noCharacter> {{ displayedDialogue }} </ng-template>
 

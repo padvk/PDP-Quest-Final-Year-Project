@@ -1,6 +1,6 @@
 <div class="location-background" [style.background-image]="'url(' + image + ')'">
 
-	<ng-container *ngIf="location == 'town'">
+	<ng-container *ngIf="!dialogueActive && location == 'town'">
 
 			<div class="clickable market" (click)="handleBackgroundClick('market')">
 			</div>

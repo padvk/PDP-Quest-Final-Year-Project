@@ -1,11 +1,6 @@
 <app-home *ngIf="stateService.state == 'home'" (play)="play($event)">
 </app-home>
 
-<app-intro
-	*ngIf="stateService.state == 'intro'"
-	(nextPageEvent)="goToMap()"
-></app-intro>
-
 <app-header *ngIf="stateService.state != 'home'"></app-header>
 
 <app-map

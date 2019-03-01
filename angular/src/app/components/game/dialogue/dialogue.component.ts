@@ -48,10 +48,10 @@ export class DialogueComponent {
 	private handleClick(event: any) {
 		if(this.eRef.nativeElement.contains(event.target)) {
 
-			if (this.dialogue) {
-				this.showProvidedDialogue();
-			} else if (!this.finishedTyping) {
+			if (!this.finishedTyping) {
 				this.skipTyping();
+			} else if (this.dialogue) {
+				this.showProvidedDialogue();
 			} else {
 				this.continueStory();
 			}
@@ -72,6 +72,7 @@ export class DialogueComponent {
 	}
 
 	private continueStory() {
+		// debugger;
 		const nextDialogue = this.stateService.getNextDialogue();
 		this.finishedTyping = false;
 		
@@ -87,6 +88,7 @@ export class DialogueComponent {
 	}
 
 	private endDialogue() {
+		this.finishedTyping = true;
 		this.finished = true;
 		this.finishedDialogue.emit();
 	}

@@ -17,14 +17,13 @@ export class HomeComponent {
 	) { }
 
 	public onPlayClick(part: number) {
+		this.play.emit(part);
 		this.mainService.auth(part, this.password).subscribe(
 			(data: any) => {
 				console.log(data.data);
 				if (data.authed) {
 					this.play.emit(part);
 				} else {
-					this.play.emit(part);
-					// TODO: edit this
 					// alert('Your password is not recognised for part ' + part + '.');
 				}
 			},

@@ -24,7 +24,7 @@
     position: absolute;
     /* top: -190px; */
     bottom: 0px;
-    width: 350px;
+    width: 20%;
 }
 
 .character-img {
@@ -34,14 +34,10 @@
 }
 
 .dialogue-box {
-    /* width: -moz-calc(100% - 380px);
-    width: -webkit-calc(100% - 380px);
-    width: -o-calc(100% - 380px);
-    width: calc(100% - 380px); */
-    width: 70%;
+    width: 75%;
 
     position: relative;
-    left: 320px;
+    left: 20%;
     bottom: 20px;
     min-height: 74px;
     padding: 10px;
@@ -52,6 +48,11 @@
     font-family: "Bookman Old Style";
     font-size: 32px;
     color: white;
+}
+
+.info {
+    left: 5%;
+    width: 90%;
 }
 
 .blinking {

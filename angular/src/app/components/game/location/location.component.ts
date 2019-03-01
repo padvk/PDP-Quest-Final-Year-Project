@@ -29,16 +29,14 @@ export class LocationComponent implements OnInit {
 	}
 	
 	public handleBackgroundClick(item: string) {
-		if (this.dialogueActive) {
-			switch(this.location) {
-				case 'forest':
-					this.handleForestClick(item);
-					break;
-	
-				case 'town':
-					this.handleTownClick(item);
-					break;
-			}
+		switch(this.location) {
+			case 'forest':
+				this.handleForestClick(item);
+				break;
+
+			case 'town':
+				this.handleTownClick(item);
+				break;
 		}
 		
 	}
@@ -52,6 +50,7 @@ export class LocationComponent implements OnInit {
 			case 'market':
 				// clicked on the market in the town
 				console.log('asdf');
+				this.stateService.changeLocation('market');
 				break;
 		}
 
