@@ -19,11 +19,16 @@ export class HomeComponent implements OnInit{
 	) { }
 
 	ngOnInit() {
-		this.stateService.loadSounds();
+		if (this.stateService.dialogueIndex == 0) { // first load
+			this.stateService.loadSounds();
+
+		} else { // end of game
+			this.end();
+		}
 	}
 
 	public onPlayClick(part: number) {
-		this.play.emit(part);
+		this.play.emit(part); // TODO: remove
 		this.mainService.auth(part, this.password).subscribe(
 			(data: any) => {
 				console.log(data.data);
@@ -39,7 +44,7 @@ export class HomeComponent implements OnInit{
 		);
 	}
 
-	public testEnd() {
+	public end() {
 		this.mainService.end().subscribe(
 			(data: any) => {
 				console.log(data.data);

@@ -13,7 +13,7 @@ export class StateService {
 	public currentLocation = '';
 	
 	public dialogueIndex = 0;
-	public nextLocation = 'forest';
+	public nextLocation = '';
 
 	public inventory = {
 		carrots: 0,
@@ -42,7 +42,7 @@ export class StateService {
 	];
 
 	public events = [
-		'map', 'carrot', 'gold', 'book', 'lamp', 'clocktower'
+		'map', 'carrot', 'gold', 'book', 'lamp', 'clocktower', 'achievement', 'menu-select', 'spell'
 	];
 
 	private dialogueSounds = [];
@@ -65,9 +65,9 @@ export class StateService {
 			this.locations[partData['unlockedLocations'][i]].cost = 0;
 		}
 
-		// return partData['initialLocation'];
-		this.SKIPSTORY(65);
-		return 'town';
+		return partData['initialLocation'];
+		// this.SKIPSTORY(65);
+		// return 'town';
 	}
 
 	public SKIPSTORY(number: number) {
@@ -114,7 +114,7 @@ export class StateService {
 	}
 
 	/**
-	 * Return the next piece of dialogue to display
+	 * Return the next piece of dialogue to display, or perform the next event
 	 */
 	public getNextDialogue() {
 		const dialogue = this.parts[this.currentPartIndex].dialogue[this.dialogueIndex];
@@ -136,24 +136,35 @@ export class StateService {
 			return this.getNextDialogue();
 
 		} else if (dialogue.name == 'location') {
-			this.changeLocation(dialogue['location']);
+			this.changeLocation(dialogue['location'], true);
 			return null;
 
 		} else if (dialogue.name == 'inventory') {
 			this.modifyInventory(dialogue['item'], dialogue['modify']);
 			return this.getNextDialogue();
 
+		} else if (dialogue.name == 'event') {
+			this.playSound('event', dialogue['item']);
+			return this.getNextDialogue();
+
+		} else if (dialogue.name == 'endPart') {
+			this.state = 'home';
+
 		} else {
 			return dialogue;
 		}
 	}
 
-	public changeLocation(location: string) {
-		this.currentLocation = this.nextLocation = location;
+	public changeLocation(location: string, updateNextLocation: boolean = false) {
+		this.currentLocation = location;
+		if (updateNextLocation) {
+			this.nextLocation = location;
+		}
+
 		this.state = '';
 		setTimeout(() => {	
 			this.state = 'location';
-		}, (100));
+		}, (50));
 	}
 
 	public loadSounds() {
@@ -247,7 +258,7 @@ export class StateService {
 				{name: 'Kiku', dialogue: 'Ah! Who said that. I told you we weren’t alone.'},
 				{name: 'Olah', dialogue: 'Me! Over here!'},
 				{name: 'Olah', dialogue: 'My name is Olah, I am the hermit of these woods.'},
-				{name: 'Olah', dialogue: 'I’ve not seen anyone walk down this path for quite some time… days, possibly even weeks'},
+				{name: 'Olah', dialogue: 'I’ve not seen anyone walk down this path for quite some time... days, possibly even weeks'},
 				{name: 'Olah', dialogue: 'So I’m glad to finally see a new face for once.'},
 				{name: 'Kiku', dialogue: 'You must be so lonely out here by yourself...'},
 				{name: 'Kiku', dialogue: 'We have travelled from the kingdom of Orilon. No one has heard from Arkala in weeks, so we\'re on a mission to investigate and help.'},
@@ -320,16 +331,18 @@ export class StateService {
 				{name: 'Shopkeeper', dialogue: '... and I’m sure both of you together could come up with something exciting!!'},
 				{name: 'Shopkeeper', dialogue: 'In return I’ll give you a discount. 10 carrots for your 5 gold.'},
 				{name: 'Shopkeeper', dialogue: 'Deal?'},
+				{name: 'info', dialogue: 'Placeholder while I decide exactly what task to give you.'},
+				{name: 'info', dialogue: 'End of part 1.'},
 				{name: 'endPart', part: '1'}
 			]
 		},
 
 		{
 			initialLocation: 'market',
-			carrots: 0,
+			carrots: 2,
 			gold: 5,
 			book: 0,
-			unlockedLocations: ['town'],
+			unlockedLocations: ['forest', 'town'],
 			currentTask: 2,
 			dialogue: [
 				{name: 'Shopkeeper', dialogue: 'Thanks, you two. You two came up with some really interesting ideas.'},
@@ -337,11 +350,13 @@ export class StateService {
 				{name: 'Shopkeeper', dialogue: 'As promised, here’s your carrots.'},
 				{name: 'Kiku', dialogue: 'Great! Glad you like our ideas.'},
 				{name: 'inventory', item: 'carrots', modify: 10},
-				{name: 'info', dialogue: 'You received 10 carrots.'},
+				{name: 'inventory', item: 'gold', modify: -5},
+				{name: 'info', dialogue: 'You spent 5 gold and received 10 carrots.'},
 				{name: 'Shopkeeper', dialogue: 'And while you were giving your presentation, I remembered something that might help you in your quest.'},
 				{name: 'Shopkeeper', dialogue: 'There is a wizard who lives in the lighthouse not too far North (tbc) from here. Rumour has it that he is preparing some kind of spell to banish the witch.'},
-				{name: 'Shopkeeper', dialogue: 'I might be worth you paying him a visit.'},
+				{name: 'Shopkeeper', dialogue: 'It might be worth you paying him a visit.'},
 				{name: 'Kiku', dialogue: 'Thanks for that, we’ll be sure to drop by to see what he’s up to.'},
+				{name: 'task'},
 				{name: 'Kiku', dialogue: 'We’ll be off now.'},
 				{name: 'Shopkeeper', dialogue: 'Good luck!'},
 				{name: 'location', location: 'town'},
@@ -350,15 +365,117 @@ export class StateService {
 				{name: 'Kiku', dialogue: 'We got caught up in a conversation with the shopkeeper.'},
 				{name: 'Julissa', dialogue: 'Of course. It can be easy to get lost in conversation with that man sometimes.'},
 				{name: 'Julissa', dialogue: 'Anyway, here’s your half. You got me the perfect amount of carrots I need to prepare dinner. Thanks for helping me out.'},
+				{name: 'inventory', item: 'carrots', modify: -5},
 				{name: 'Kiku', dialogue: 'No problem. We should have enough food now for us to continue in our quest.'},
 				{name: 'Kiku', dialogue: 'Nice meeting you, Julissa.'},
 				{name: 'Julissa', dialogue: 'See you around!'},
 				{name: 'map', nextLocation: 'lighthouse'},
 
+				{name: 'Kiku', dialogue: 'Well, here we are.'},
+				{name: 'Kiku', dialogue: 'Lets hope that the wizard has some idea of what to do.'},
+				{name: 'info', dialogue: '*Knock knock*'},
+				{name: 'Omonar', dialogue: 'Evening. Who goes there?'},
+				{name: 'Kiku', dialogue: 'We have been sent by the king of Orilon on a quest to restore peace to the town of Arkala.'},
+				{name: 'Kiku', dialogue: 'Word has it that you seem to have an idea of how to rid the witch of this land. Is this true?'},
+				{name: 'Omonar', dialogue: 'It is. I have been working on a spell for the past two weeks, which is very nearly complete.'},
+				{name: 'Omonar', dialogue: 'However I am missing a book from my collection with some key information on how to complete my spell.'},
+				{name: 'Omonar', dialogue: 'I can not complete the spell without that book, how terribly annoying.'},
+				{name: 'Omonar', dialogue: 'I believe the last time I remember seeing this book was with my old wizard partner, Olah...'},
+				{name: 'Omonar', dialogue: 'Unfortunately I haven’t seen Olah in almost 20 years and have no clue where he might be.'},
+				{name: 'Kiku', dialogue: 'Wait, we met an Olah in the forest not too long ago!'},
+				{name: 'Kiku', dialogue: 'Sounds like he has been living in the forest for quite some time. He definitely looked like he could be an ex wizard.'},
+				{name: 'Omonar', dialogue: 'Goodness me, I have been searching for Olah for far too long.'},
+				{name: 'Omonar', dialogue: 'He always talked about his plans for becoming a hermit but I never thought he would actually become one.'},
+				{name: 'Omonar', dialogue: 'Anyway, would you two be willing to do me a favour?'},
+				{name: 'Omonar', dialogue: 'Go find Olah once again and see if he still possesses the book I need.'},
+				{name: 'task'},
+				{name: 'Omonar', dialogue: 'He will know which one I am after. We would read from it almost every day back in the day.'},
+				{name: 'Kiku', dialogue: 'Alright, we’ll go see if he has your book.'},
+				{name: 'map', nextLocation: 'forest'},
+
+				{name: 'Kiku', dialogue: 'Olah, are you here?'},
+				{name: 'Olah', dialogue: 'Hello! You’ve caught me in the middle of writing up my expenses in a spreadsheet...'},
+				{name: 'Olah', dialogue: 'Excel can be a real pain sometimes. I wish I had listened in my IT classes in school.'},
+				{name: 'Olah', dialogue: 'You two were here not too long ago, no? Have you already saved Arkala? What great news!'},
+				{name: 'Kiku', dialogue: 'Not quite yet, hermit. We met an old wizard called Omonar up at the lighthouse.'},
+				{name: 'Kiku', dialogue: 'You were right about the witch. She has turned Arkala into a prison. But Omonar has a plan to cast a spell on her in order to banish her forever!'},
+				{name: 'Olah', dialogue: 'Omonar? That name rings a bell...'},
+				{name: 'Kiku', dialogue: 'He says you two were old buddies, and that you might have a book that could be of use to him.'},
+				{name: 'Olah', dialogue: 'I remember now! We used to do all sorts of wizardry together...'},
+				{name: 'Olah', dialogue: '“… but I eventually grew tired of the wizard lifestyle and decided to get away from it all. So I came here, and took some of my favourite spell books with me just for the memories.'},
+				{name: 'Olah', dialogue: 'I’m glad to hear he is alive and well though.'},
+				{name: 'Olah', dialogue: 'He is probably searching for this fantastic book here. We used to read from it all the time together.'},
+				{name: 'Olah', dialogue: 'Tell you what. You two look like you know your way around a computer. Would you mind giving me a helping hand to write up this excel spreadsheet?'},
+				{name: 'Olah', dialogue: 'I’ve been struggling with it all day. In return I’ll give you the spell book that Omonar is after.'},
+				{name: 'info', dialogue: 'Placeholder while I decide exactly what task to give you.'},
+				{name: 'info', dialogue: 'End of part 2.'},
+				{name: 'endPart', part: '2'}
 			]
-		
 		},
 
+		{
+			initialLocation: 'forest',
+			carrots: 0,
+			gold: 0,
+			book: 0,
+			unlockedLocations: ['forest', 'town', 'lighthouse'],
+			currentTask: 4,
+			dialogue: [
+				{name: 'Olah', dialogue: 'My expenses! They have never looked so magnificent.'},
+				{name: 'Olah', dialogue: 'Thanks for your help. Here’s the book you’re after.'},
+				{name: 'inventory', item: 'book', modify: 1},
+				{name: 'info', dialogue: 'You received the spell book.'},
+				{name: 'Olah', dialogue: 'It’s all about the logic and semantics of spells and advanced wizardry complexity theory.'},
+				{name: 'Olah', dialogue: 'You should give it a read on your travels, it’s a good read.'},
+				{name: 'Kiku', dialogue: 'I think we’ll pass on that one, thanks.'},
+				{name: 'Kiku', dialogue: 'Let’s bring this back to Omonar right away. You might just have saved this town!'},
+				{name: 'Olah', dialogue: 'Say hi from me when you see him again.'},
+				{name: 'map', nextLocation: 'lighthouse'},
+
+				{name: 'Omonar', dialogue: 'You have returned! Did you find the book that I was after?'},
+				{name: 'Kiku', dialogue: 'I think so. Olah seemed to know exactly which book you were talking about.'},
+				{name: 'Kiku', dialogue: 'Here it is.'},
+				{name: 'inventory', item: 'book', modify: -1},
+				{name: 'info', dialogue: 'You gave Omonar the spell book.'},
+				{name: 'Omonar', dialogue: 'That’s the one. I have some very fond memories of this book.'},
+				{name: 'Omonar', dialogue: 'Now I think I have all the resources I need to complete my spell.'},
+				{name: 'Omonar', dialogue: 'It will however take me some time to do so, as I must cross-reference this book with the rest of my library.'},
+				{name: 'Omonar', dialogue: 'There is still quite a bit of work to be done to make sense of all this literature collectively.'},
+				{name: 'Omonar', dialogue: 'Say, you could help me organise and make sense of all this literature! Then we’d be able to get down to business in no time.'},
+				{name: 'Omonar', dialogue: 'Could you write me a literature review of this here pile of books?'},
+				{name: 'Kiku', dialogue: 'I wish I had listened in my magic classes...'},
+				{name: 'info', dialogue: 'Placeholder while I decide exactly what task to give you.'},
+				{name: 'info', dialogue: 'End of part 3.'},
+				{name: 'endPart', part: '3'}
+			]
+		},
+
+		{
+			initialLocation: 'lighthouse',
+			carrots: 0,
+			gold: 0,
+			book: 0,
+			unlockedLocations: ['forest', 'town', 'lighthouse'],
+			currentTask: 5,
+			dialogue: [
+				{name: 'Omonar', dialogue: 'Having read through your literature review, I have finally constructed my spell!'},
+				{name: 'Omonar', dialogue: 'This could have taken days with only one pair of hands, so thank you for your help.'},
+				{name: 'Kiku', dialogue: 'We do our best.'},
+				{name: 'Omonar', dialogue: 'The time has finally come to restore peace to my beloved town. Here it goes...'},
+				{name: 'Omonar', dialogue: 'Lumergio stupectus... Levasi Evicum... Illumia Demigeo...'},
+				{name: 'event', item: 'spell'},
+				{name: 'Omonar', dialogue: 'ABRA-CA-DABRA!!!'},
+				{name: 'info', dialogue: 'You feel a shudder in the ground.'},
+				{name: 'Kiku', dialogue: 'Wow, I never knew abracadabra was a real spell used in wizardry.'},
+				{name: 'Omonar', dialogue: 'It isn’t, really. It’s mostly used for dramatic effect.'},
+				{name: 'Omonar', dialogue: 'But, if my calculations were correct...'},
+				{name: 'Omonar', dialogue: '... peace has been restored in Arkala at last! What a great day.'},
+				
+				{name: 'info', dialogue: 'End of part 4.'},
+				{name: 'info', dialogue: 'Thanks for playing. Hopefully you learnt some useful skills.'},
+				{name: 'endPart', part: '4'}
+			]
+		}
 	];
 
 }
