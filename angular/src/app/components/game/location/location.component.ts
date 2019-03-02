@@ -51,7 +51,8 @@ export class LocationComponent implements OnInit {
 				this.stateService.changeLocation('market');
 				break;
 			case 'lamp':
-				this.stateService.playSound('event', 'lamp');
+			case 'clocktower':
+				this.stateService.playSound('event', item);
 				break;
 		}
 

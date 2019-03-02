@@ -69,9 +69,9 @@ export class StateService {
 			this.locations[partData['unlockedLocations'][i]].cost = 0;
 		}
 
-		return partData['initialLocation'];
-		// this.SKIPSTORY(65);
-		// return 'town';
+		// return partData['initialLocation'];
+		this.SKIPSTORY(65);
+		return 'town';
 	}
 
 	/**
@@ -81,6 +81,37 @@ export class StateService {
 	public SKIPSTORY(number: number) {
 		for (let i = 0; i < number; i++) {
 			this.getNextDialogue();
+		}
+	}
+
+	/**
+	 * Load all sound files to be used
+	 */
+	public loadSounds() {
+		for (let character in this.characters) {
+			const charSound = new Audio();
+			const thisCharacter = this.characters[character];
+			charSound.src = environment.deploypath + '/assets/audio/dialogue/' + thisCharacter + '.ogg';
+			charSound.loop = true;
+			charSound.load();
+			this.dialogueSounds[thisCharacter] = charSound;
+		}
+
+		for (let location in this.locations) {
+			const locationSound = new Audio();
+			locationSound.src = environment.deploypath + '/assets/audio/backgrounds/' + location + '.ogg';
+			locationSound.loop = true;
+			locationSound.load();
+			this.locationSounds[location] = locationSound;
+		}
+
+		for (let event in this.events) {
+			const eventSound = new Audio();
+			const thisEvent = this.events[event];
+			eventSound.src = environment.deploypath + '/assets/audio/events/' + thisEvent + '.ogg';
+			eventSound.loop = false;
+			eventSound.load();
+			this.eventSounds[thisEvent] = eventSound;
 		}
 	}
 
@@ -181,6 +212,9 @@ export class StateService {
 			this.playSound('event', dialogue['item']);
 			return this.getNextDialogue();
 
+		} else if (dialogue.name == 'endDialogue') { // end of dialogue for that location
+			this.nextLocation = dialogue['location'];
+
 		} else if (dialogue.name == 'endPart') { // end of part
 			this.state = 'home';
 
@@ -204,37 +238,6 @@ export class StateService {
 		setTimeout(() => {	
 			this.state = 'location';
 		}, (50));
-	}
-
-	/**
-	 * Load all sound files to be used
-	 */
-	public loadSounds() {
-		for (let character in this.characters) {
-			const charSound = new Audio();
-			const thisCharacter = this.characters[character];
-			charSound.src = environment.deploypath + '/assets/audio/dialogue/' + thisCharacter + '.ogg';
-			charSound.loop = true;
-			charSound.load();
-			this.dialogueSounds[thisCharacter] = charSound;
-		}
-
-		for (let location in this.locations) {
-			const locationSound = new Audio();
-			locationSound.src = environment.deploypath + '/assets/audio/backgrounds/' + location + '.ogg';
-			locationSound.loop = true;
-			locationSound.load();
-			this.locationSounds[location] = locationSound;
-		}
-
-		for (let event in this.events) {
-			const eventSound = new Audio();
-			const thisEvent = this.events[event];
-			eventSound.src = environment.deploypath + '/assets/audio/events/' + thisEvent + '.ogg';
-			eventSound.loop = false;
-			eventSound.load();
-			this.eventSounds[thisEvent] = eventSound;
-		}
 	}
 
 	/**
