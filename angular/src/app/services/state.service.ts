@@ -51,6 +51,10 @@ export class StateService {
 
 	constructor() {}
 
+	/**
+	 * Set the state variables for the game depending on which part we're playing
+	 * @param part 1, 2, 3 or 4
+	 */
 	public initialiseGame(part: number) {
 		this.currentPartIndex = part-1;
 		const partData = this.parts[this.currentPartIndex];
@@ -70,28 +74,50 @@ export class StateService {
 		// return 'town';
 	}
 
+	/**
+	 * Method for debugging. Skip ahead in the dialogue to avoid clicking a million times.
+	 * @param number Number of dialogue skips
+	 */
 	public SKIPSTORY(number: number) {
 		for (let i = 0; i < number; i++) {
 			this.getNextDialogue();
 		}
 	}
 
+	/**
+	 * Go to the map
+	 */
 	public goToMap() {
 		this.state = 'map';
 	}	
 
+	/**
+	 * Return the current task
+	 */
 	public getCurrentTask() {
 		return this.tasks[this.currentTask].description;
 	}
 
+	/**
+	 * Set the current task to the next task in the list
+	 */
 	public nextTask() {
-		this.currentTask += 1;
+		this.currentTask++;
 	}
 
+	/**
+	 * Update the player's inventory
+	 * @param item The item to be updated
+	 * @param amount The amount to update the item by (either positive or negative)
+	 */
 	public modifyInventory(item: string, amount: number) {
 		this.inventory[item] += amount;
 	}
 
+	/**
+	 * Determines whether the player has enough carrots to unlock the specified location
+	 * @param location The location to be unlocked
+	 */
 	public canUnlockLocation(location: string) {
 		if (this.inventory.carrots >= this.locations[location].cost) {
 			return true;
@@ -99,6 +125,10 @@ export class StateService {
 		return false;
 	}
 
+	/**
+	 * Trade carrots in return for unlocking the specified location
+	 * @param location The location to be unlocked
+	 */
 	public unlockLocation(location: string) {
 		if (this.inventory.carrots >= this.locations[location].cost) {
 			this.inventory.carrots -= this.locations[location].cost;
@@ -109,6 +139,10 @@ export class StateService {
 		}
 	}
 
+	/**
+	 * Return the cost of the specified location
+	 * @param location The location to check the cost of
+	 */
 	public costOfLocation(location: string) {
 		return this.locations[location]['cost'];
 	}
@@ -125,36 +159,41 @@ export class StateService {
 			this.state = 'map';
 			return null;
 
-		} else if (dialogue.name == 'map') {
+		} else if (dialogue.name == 'map') { // go to the map
 			this.nextLocation = dialogue['nextLocation'];
 			this.currentLocation = '';
 			this.state = 'map';
 			return null;
 
-		} else if (dialogue.name == 'task') {
-			this.currentTask++;
+		} else if (dialogue.name == 'task') { // set the next task
+			this.nextTask();
 			return this.getNextDialogue();
 
-		} else if (dialogue.name == 'location') {
+		} else if (dialogue.name == 'location') { // go to the specified location
 			this.changeLocation(dialogue['location'], true);
 			return null;
 
-		} else if (dialogue.name == 'inventory') {
+		} else if (dialogue.name == 'inventory') { // update the player's inventory
 			this.modifyInventory(dialogue['item'], dialogue['modify']);
 			return this.getNextDialogue();
 
-		} else if (dialogue.name == 'event') {
+		} else if (dialogue.name == 'event') { // play event sound
 			this.playSound('event', dialogue['item']);
 			return this.getNextDialogue();
 
-		} else if (dialogue.name == 'endPart') {
+		} else if (dialogue.name == 'endPart') { // end of part
 			this.state = 'home';
 
-		} else {
+		} else { // show actual dialogue
 			return dialogue;
 		}
 	}
 
+	/**
+	 * Go to the specified location
+	 * @param location The location to go to
+	 * @param updateNextLocation Whether or not the specified location is the next location in the story
+	 */
 	public changeLocation(location: string, updateNextLocation: boolean = false) {
 		this.currentLocation = location;
 		if (updateNextLocation) {
@@ -167,6 +206,9 @@ export class StateService {
 		}, (50));
 	}
 
+	/**
+	 * Load all sound files to be used
+	 */
 	public loadSounds() {
 		for (let character in this.characters) {
 			const charSound = new Audio();
@@ -195,6 +237,11 @@ export class StateService {
 		}
 	}
 
+	/**
+	 * Play a sound
+	 * @param type Type of the sound, can hold the value 'character', 'location' or 'event'
+	 * @param item The sound to be played
+	 */
 	public playSound(type: string, item: string) {
 		const soundsArray = this.getSoundArray(type);
 
@@ -203,6 +250,11 @@ export class StateService {
 		}
 	}
 
+	/**
+	 * Stop a sound
+	 * @param type Type of the sound, can hold the value 'character', 'location' or 'event'
+	 * @param item The sound to be stopped
+	 */
 	public stopSound(type: string, item: string) {
 		const soundsArray = this.getSoundArray(type);
 
@@ -211,6 +263,10 @@ export class StateService {
 		}
 	}
 
+	/**
+	 * Return the relevant sound array
+	 * @param type Denotes which array to return
+	 */
 	private getSoundArray(type: string) {
 		switch(type) {
 			case 'location': return this.locationSounds;
