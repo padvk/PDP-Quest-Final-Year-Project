@@ -1,8 +1,8 @@
 .header-bar {
     width: 100%;
     height: 100px;
-    background-color: brown;
-    border: 6px solid gold;
+    background-color: #ffcc80;
+    border: 6px solid #0000ff;
 }
 
 .container {

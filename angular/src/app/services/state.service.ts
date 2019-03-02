@@ -42,7 +42,7 @@ export class StateService {
 	];
 
 	public events = [
-		'map', 'carrot', 'gold', 'book', 'lamp', 'clocktower', 'achievement', 'menu-select', 'spell'
+		'snore', 'map', 'carrot', 'gold', 'book', 'lamp', 'clocktower', 'achievement', 'menu-select', 'spell'
 	];
 
 	private dialogueSounds = [];
@@ -229,8 +229,6 @@ export class StateService {
 	 *  - Other events are simply dialogue from a character
 	 */
 
-	//public initialLocations = ['intro', 'market', 'forest', 'lighthouse'];
-	
 	// Dialogue and events for each part
 	private parts = [
 		{
@@ -241,10 +239,12 @@ export class StateService {
 			unlockedLocations: [],
 			currentTask: 0,
 			dialogue: [
+				{name: 'event', item: 'snore'},
 				{name: 'Kiku', dialogue: 'Hey....'},
-				{name: 'Kiku', dialogue: 'Oh hey, you’re finally awake!'},
-				{name: 'Kiku', dialogue: 'You’ve been asleep for nearly 13 hours… I guess knights really do love a good nap huh.'},
-				{name: 'Kiku', dialogue: 'Sorry, where are my manners… I’m Kiku, one of the king’s trusted faries.'},
+				{name: 'Kiku', dialogue: 'Hey!! Wake up.'},
+				{name: 'Kiku', dialogue: 'Ah, you’re finally awake!'},
+				{name: 'Kiku', dialogue: 'You’ve been asleep for nearly 13 hours... I guess knights really do love a good nap huh.'},
+				{name: 'Kiku', dialogue: 'Sorry, where are my manners... I’m Kiku, one of the king’s trusted faries.'},
 				{name: 'Kiku', dialogue: 'I’m sure you are aware that the residents of Arkala, the town not too far North from here, has gone silent. Nobody has heard a word from any of its residents in weeks.'},
 				{name: 'Kiku', dialogue: 'Word has it that a curse has been cast over the town, but we do not know much more than that.'},
 				{name: 'Kiku', dialogue: 'So, the king has decided to step in to find a cause for this mysterious silence, and has assigned you to journey over to the town to see what’s going on...'},
@@ -345,6 +345,7 @@ export class StateService {
 			unlockedLocations: ['forest', 'town'],
 			currentTask: 2,
 			dialogue: [
+				{name: 'event', dialogue: 'achievement'},
 				{name: 'Shopkeeper', dialogue: 'Thanks, you two. You two came up with some really interesting ideas.'},
 				{name: 'Shopkeeper', dialogue: 'I’ll be sure to put one of these on my news stand. Good work!'},
 				{name: 'Shopkeeper', dialogue: 'As promised, here’s your carrots.'},
@@ -421,6 +422,7 @@ export class StateService {
 			unlockedLocations: ['forest', 'town', 'lighthouse'],
 			currentTask: 4,
 			dialogue: [
+				{name: 'event', dialogue: 'achievement'},
 				{name: 'Olah', dialogue: 'My expenses! They have never looked so magnificent.'},
 				{name: 'Olah', dialogue: 'Thanks for your help. Here’s the book you’re after.'},
 				{name: 'inventory', item: 'book', modify: 1},
@@ -458,6 +460,7 @@ export class StateService {
 			unlockedLocations: ['forest', 'town', 'lighthouse'],
 			currentTask: 5,
 			dialogue: [
+				{name: 'event', dialogue: 'achievement'},
 				{name: 'Omonar', dialogue: 'Having read through your literature review, I have finally constructed my spell!'},
 				{name: 'Omonar', dialogue: 'This could have taken days with only one pair of hands, so thank you for your help.'},
 				{name: 'Kiku', dialogue: 'We do our best.'},
