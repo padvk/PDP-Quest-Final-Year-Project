@@ -46,7 +46,10 @@ export class DialogueComponent {
 	 * Run when a click is detected
 	 */
 	private handleClick(event: any) {
-		if(this.eRef.nativeElement.contains(event.target)) {
+		const target = event.target || event.srcElement || event.currentTarget;
+		const idAttr = target.attributes.id;
+	
+		if(!(idAttr && idAttr.nodeValue == 'bw') && this.eRef.nativeElement.contains(event.target)) {
 
 			if (!this.finishedTyping) {
 				this.skipTyping();
@@ -135,6 +138,10 @@ export class DialogueComponent {
 		if (character != 'info') {
 			this.stateService.stopSound('character', character);
 		}
+	}
+
+	public changeBW() {
+		this.stateService.dialogueWhiteOnBlack = !this.stateService.dialogueWhiteOnBlack;
 	}
 
 }

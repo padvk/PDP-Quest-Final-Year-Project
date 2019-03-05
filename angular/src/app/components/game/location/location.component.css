@@ -11,7 +11,7 @@
 .clickable {
     z-index: 99;
     position: absolute;
-    background-color: red;
+    background-color: transparent;
     cursor: pointer;
 }
 
@@ -34,4 +34,11 @@
     left: 20%;
     width: 12%;
     height: 72%;
+}
+
+.window {
+    top: 15%;
+    left: 69%;
+    width: 16%;
+    height: 75%;
 }

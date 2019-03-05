@@ -22,7 +22,6 @@
 
 .character-display {
     position: absolute;
-    /* top: -190px; */
     bottom: 0px;
     width: 24%;
 }
@@ -50,6 +49,11 @@
     color: white;
 }
 
+.whiteOnBlack {
+    background-color: white !important;
+    color: black !important;
+}
+
 .info {
     left: 5%;
     width: 90%;
@@ -61,6 +65,15 @@
 @keyframes blinkingText{
     0% { color: transparent; }
     50% { color: #FFF; }
+    100% {color: transparent; }
+}
+
+.blinkingBlack {
+    animation: blinkingTextBlack 1.5s infinite;
+}
+@keyframes blinkingTextBlack{
+    0% { color: transparent; }
+    50% { color: #000; }
     100% {color: transparent; }
 }
 
@@ -91,4 +104,11 @@
 @-o-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
+}
+
+.bw {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 4%;
 }

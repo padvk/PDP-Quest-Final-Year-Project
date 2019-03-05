@@ -52,6 +52,7 @@ export class LocationComponent implements OnInit {
 				break;
 			case 'lamp':
 			case 'clocktower':
+			case 'window':
 				this.stateService.playSound('event', item);
 				break;
 		}

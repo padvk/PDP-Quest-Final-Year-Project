@@ -4,7 +4,7 @@
 		<img class="character-img" src="{{deploypath}}/assets/images/characters/{{ currentCharacter }}.png" alt="Character image">
 	</div>
 
-	<div class="dialogue-box" [class.info]="currentCharacter == 'info'" *ngIf="!finished">
+	<div class="dialogue-box" [class.info]="currentCharacter == 'info'" [class.whiteOnBlack]="stateService.dialogueWhiteOnBlack" *ngIf="!finished">
 
 		<ng-template #noCharacter> {{ displayedDialogue }} </ng-template>
 
@@ -12,7 +12,9 @@
 
 		<ng-content *ngIf="currentCharacter == 'info'; then noCharacter; else hasCharacter"></ng-content>
 
-		<span class="blinking" *ngIf="finishedTyping">&rArr;</span>
+		<span [class.blinking]="!stateService.dialogueWhiteOnBlack" [class.blinkingBlack]="stateService.dialogueWhiteOnBlack" *ngIf="finishedTyping">&rArr;</span>
+
+		<img class="bw" id="bw" src="{{deploypath}}/assets/images/other/bw.png" alt="" (click)="changeBW()">
 
 	</div>
 

@@ -15,6 +15,8 @@ export class StateService {
 	public dialogueIndex = 0;
 	public nextLocation = '';
 
+	public dialogueWhiteOnBlack = false;
+
 	public inventory = {
 		carrots: 0,
 		gold: 0,
@@ -42,7 +44,7 @@ export class StateService {
 	];
 
 	public events = [
-		'snore', 'map', 'carrot', 'gold', 'book', 'lamp', 'clocktower', 'achievement', 'menu-select', 'spell'
+		'snore', 'map', 'carrots', 'gold', 'book', 'lamp', 'clocktower', 'window', 'knock', 'achievement', 'menu-select', 'spell', 'shock', 'computer'
 	];
 
 	private dialogueSounds = [];
@@ -206,6 +208,7 @@ export class StateService {
 
 		} else if (dialogue.name == 'inventory') { // update the player's inventory
 			this.modifyInventory(dialogue['item'], dialogue['modify']);
+			this.playSound('event', dialogue['item']);
 			return this.getNextDialogue();
 
 		} else if (dialogue.name == 'event') { // play event sound
@@ -307,12 +310,12 @@ export class StateService {
 				{name: 'Kiku', dialogue: 'I’m sure you are aware that the residents of Arkala, the town not too far North from here, has gone silent. Nobody has heard a word from any of its residents in weeks.'},
 				{name: 'Kiku', dialogue: 'Word has it that a curse has been cast over the town, but we do not know much more than that.'},
 				{name: 'Kiku', dialogue: 'So, the king has decided to step in to find a cause for this mysterious silence, and has assigned you to journey over to the town to see what’s going on...'},
-				{name: 'Kiku', dialogue: '“... and assigned me as your companion! I will help guide you on your way.'},
+				{name: 'Kiku', dialogue: '... and assigned me as your companion! I will help guide you on your way.'},
 				{name: 'Kiku', dialogue: 'I’ll give you some time to prepare, we will begin our journey on horseback as soon as possible!'},
 				{name: 'Kiku', dialogue: 'And don’t you dare fall back asleep...'},
 				{name: 'map', nextLocation: 'forest'},
 
-				{name: 'Kiku', dialogue: 'This forest is so eerie… I feel like we’re being watched.'},
+				{name: 'Kiku', dialogue: 'This forest is so eerie... I feel like we’re being watched.'},
 				{name: 'Olah', dialogue: 'Hello!'},
 				{name: 'Kiku', dialogue: 'Ah! Who said that. I told you we weren’t alone.'},
 				{name: 'Olah', dialogue: 'Me! Over here!'},
@@ -347,6 +350,7 @@ export class StateService {
 				{name: 'Kiku', dialogue: 'Everyone must be at home feeling sorry for themselves.'},
 				{name: 'Kiku', dialogue: 'Hey, why don’t we knock on some houses? Maybe they could tell us more about what’s going on.'},
 				{name: 'Kiku', dialogue: 'Let’s try this house. I hope someone’s home.'},
+				{name: 'event', item: 'knock'},
 				{name: 'info', dialogue: '*Knock knock*'},
 				{name: 'Julissa', dialogue: 'Oh, hey you two.'},
 				{name: 'Julissa', dialogue: 'I’m not sure I’ve seen your faces around here before. Are you from here?'},
@@ -366,6 +370,7 @@ export class StateService {
 				{name: 'Julissa', dialogue: 'Yes I do believe you should be in luck, although I wouldn’t wait around as everyone will be stocking up on the final supplies.'},
 				{name: 'Kiku', dialogue: 'Great, let’s go stock up on some carrots before they run out then.'},
 				{name: 'Kiku', dialogue: 'Hey, knight, you did bring some coins with you, didn\'t you?'},
+				{name: 'event', item: 'shock'},
 				{name: 'Kiku', dialogue: '... No?!?'},
 				{name: 'Kiku', dialogue: 'I thought I told you to prepare!'},
 				{name: 'Julissa', dialogue: 'Tell you what, I am also in need of some carrots for tonight’s dinner.'},
@@ -404,7 +409,7 @@ export class StateService {
 			unlockedLocations: ['forest', 'town'],
 			currentTask: 2,
 			dialogue: [
-				{name: 'event', dialogue: 'achievement'},
+				{name: 'event', item: 'achievement'},
 				{name: 'Shopkeeper', dialogue: 'Thanks, you two. You two came up with some really interesting ideas.'},
 				{name: 'Shopkeeper', dialogue: 'I’ll be sure to put one of these on my news stand. Good work!'},
 				{name: 'Shopkeeper', dialogue: 'As promised, here’s your carrots.'},
@@ -433,6 +438,7 @@ export class StateService {
 
 				{name: 'Kiku', dialogue: 'Well, here we are.'},
 				{name: 'Kiku', dialogue: 'Lets hope that the wizard has some idea of what to do.'},
+				{name: 'event', item: 'knock'},
 				{name: 'info', dialogue: '*Knock knock*'},
 				{name: 'Omonar', dialogue: 'Evening. Who goes there?'},
 				{name: 'Kiku', dialogue: 'We have been sent by the king of Orilon on a quest to restore peace to the town of Arkala.'},
@@ -454,6 +460,7 @@ export class StateService {
 				{name: 'map', nextLocation: 'forest'},
 
 				{name: 'Kiku', dialogue: 'Olah, are you here?'},
+				{name: 'event', item: 'computer'},
 				{name: 'Olah', dialogue: 'Hello! You’ve caught me in the middle of writing up my expenses in a spreadsheet...'},
 				{name: 'Olah', dialogue: 'Excel can be a real pain sometimes. I wish I had listened in my IT classes in school.'},
 				{name: 'Olah', dialogue: 'You two were here not too long ago, no? Have you already saved Arkala? What great news!'},
@@ -462,7 +469,7 @@ export class StateService {
 				{name: 'Olah', dialogue: 'Omonar? That name rings a bell...'},
 				{name: 'Kiku', dialogue: 'He says you two were old buddies, and that you might have a book that could be of use to him.'},
 				{name: 'Olah', dialogue: 'I remember now! We used to do all sorts of wizardry together...'},
-				{name: 'Olah', dialogue: '“… but I eventually grew tired of the wizard lifestyle and decided to get away from it all. So I came here, and took some of my favourite spell books with me just for the memories.'},
+				{name: 'Olah', dialogue: '... but I eventually grew tired of the wizard lifestyle and decided to get away from it all. So I came here, and took some of my favourite spell books with me just for the memories.'},
 				{name: 'Olah', dialogue: 'I’m glad to hear he is alive and well though.'},
 				{name: 'Olah', dialogue: 'He is probably searching for this fantastic book here. We used to read from it all the time together.'},
 				{name: 'Olah', dialogue: 'Tell you what. You two look like you know your way around a computer. Would you mind giving me a helping hand to write up this excel spreadsheet?'},
@@ -519,7 +526,7 @@ export class StateService {
 			unlockedLocations: ['forest', 'town', 'lighthouse'],
 			currentTask: 5,
 			dialogue: [
-				{name: 'event', dialogue: 'achievement'},
+				{name: 'event', item: 'achievement'},
 				{name: 'Omonar', dialogue: 'Having read through your literature review, I have finally constructed my spell!'},
 				{name: 'Omonar', dialogue: 'This could have taken days with only one pair of hands, so thank you for your help.'},
 				{name: 'Kiku', dialogue: 'We do our best.'},
