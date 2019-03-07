@@ -71,9 +71,9 @@ export class StateService {
 			this.locations[partData['unlockedLocations'][i]].cost = 0;
 		}
 
-		// return partData['initialLocation'];
-		this.SKIPSTORY(65);
-		return 'town';
+		return partData['initialLocation'];
+		// this.SKIPSTORY(65);
+		// return 'town';
 	}
 
 	/**
@@ -380,6 +380,7 @@ export class StateService {
 				{name: 'task'},
 				{name: 'inventory', item: 'gold', modify: 5},
 				{name: 'info', dialogue: 'You received 5 gold.'},
+				{name: 'info', dialogue: 'Explore your surroundings to reach the market.'},
 				{name: 'endDialogue', location: 'market'},
 		
 				{name: 'Shopkeeper', dialogue: 'Hi there.'},
