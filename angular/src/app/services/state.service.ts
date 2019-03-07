@@ -44,7 +44,7 @@ export class StateService {
 	];
 
 	public events = [
-		'snore', 'map', 'carrots', 'gold', 'book', 'lamp', 'clocktower', 'window', 'knock', 'achievement', 'menu-select', 'spell', 'shock', 'computer'
+		'info', 'snore', 'map', 'carrots', 'gold', 'book', 'lamp', 'clocktower', 'window', 'knock', 'achievement', 'menu-select', 'spell', 'shock', 'computer'
 	];
 
 	private dialogueSounds = [];
@@ -71,9 +71,9 @@ export class StateService {
 			this.locations[partData['unlockedLocations'][i]].cost = 0;
 		}
 
-		// return partData['initialLocation'];
-		this.SKIPSTORY(65);
-		return 'town';
+		return partData['initialLocation'];
+		// this.SKIPSTORY(65);
+		// return 'town';
 	}
 
 	/**
@@ -220,6 +220,10 @@ export class StateService {
 
 		} else if (dialogue.name == 'endPart') { // end of part
 			this.state = 'home';
+
+		} else if (dialogue.name == 'info') {
+			this.playSound('event', 'info');
+			return dialogue;
 
 		} else { // show actual dialogue
 			return dialogue;
