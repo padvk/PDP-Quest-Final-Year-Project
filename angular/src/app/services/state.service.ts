@@ -384,6 +384,7 @@ export class StateService {
 				{name: 'task'},
 				{name: 'inventory', item: 'gold', modify: 5},
 				{name: 'info', dialogue: 'You received 5 gold.'},
+				{name: 'info', dialogue: 'Explore your surroundings to reach the market.'},
 				{name: 'endDialogue', location: 'market'},
 		
 				{name: 'Shopkeeper', dialogue: 'Hi there.'},

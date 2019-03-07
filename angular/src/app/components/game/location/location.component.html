@@ -1,4 +1,4 @@
-<div class="location-background" [style.background-image]="'url(' + image + ')'">
+<div class="location-background" [ngStyle]="{'background-image': 'location' != 'intro' ? 'url(' + image + ')' : '', 'background-color': 'location' != 'intro' ? '#000' : ''}">
 
 	<ng-container *ngIf="!dialogueActive && location == 'town'">
 
