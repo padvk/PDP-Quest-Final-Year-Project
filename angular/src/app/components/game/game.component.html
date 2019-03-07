@@ -1,7 +1,7 @@
 <app-home *ngIf="stateService.state == 'home'" (play)="play($event)">
 </app-home>
 
-<app-header *ngIf="stateService.state != 'home' && stateService.state != 'intro'"></app-header>
+<app-header *ngIf="stateService.state != 'home'"></app-header>
 
 <app-map
 	*ngIf="stateService.state == 'map'"

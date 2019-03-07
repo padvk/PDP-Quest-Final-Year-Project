@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StateService } from 'src/app/services/state.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
 	selector: 'app-header',
@@ -7,6 +8,8 @@ import { StateService } from 'src/app/services/state.service';
 	styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+	public deploypath = environment.deploypath;
 
 	constructor(
 		public stateService: StateService

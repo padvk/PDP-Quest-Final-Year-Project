@@ -1,5 +1,5 @@
 .header-bar {
-    width: 100%;
+    width: calc(100% - 12px);
     height: 100px;
     background-color: #ffcc80;
     border: 6px solid #0000ff;
@@ -11,7 +11,7 @@
     height: calc(100% - 12px);
     padding: 10px;
     vertical-align: top;
-    color: white;
+    color: black;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -22,12 +22,14 @@
 .item {
     display: inline-block;
     margin: 0 25px;
-    background-color: red;
+    background-color: transparent;
+    font-size: 25px;
+    color: black;
 }
 
 .icon {
-    width: 60px;
-    height: 60px;
+    width: auto;
+    height: 75px;
 }
 
 .current-task {
@@ -37,4 +39,8 @@
 .primary-text {
     font-weight: 600;
     font-size: x-large;
+}
+
+.hidden {
+    visibility: hidden;
 }

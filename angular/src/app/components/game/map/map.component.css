@@ -2,7 +2,7 @@
     position: absolute;
     background-color: lightgreen;
     width: 100%;
-    height: calc(100% - 100px);
+    height: calc(100% - 112px);
 }
 
 .location {

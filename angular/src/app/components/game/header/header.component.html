@@ -1,4 +1,5 @@
 <div class="header-bar">
+		<!-- [class.hidden]="stateService.currentLocation == 'intro'" -->
 
 	<div class="container">
 		
@@ -7,23 +8,22 @@
 		</span>
 
 		<div class="item" (click)="goToMap()">
-			<div class="icon"></div>
-			Map
+			<!-- <div class="icon"></div> -->
+			<img class="icon" src="{{deploypath}}/assets/images/inventory/map.png" alt="Map">
 		</div>
 
 		<div *ngIf="stateService.inventory.carrots > 0" (click)="itemClick('carrots')" class="item">
-			<div class="icon"></div>
-			Carrots: {{ stateService.inventory.carrots }}
+			<img class="icon" src="{{deploypath}}/assets/images/inventory/carrots.png" alt="Carrots: ">
+			{{ stateService.inventory.carrots }}
 		</div>
 
 		<div *ngIf="stateService.inventory.gold > 0" (click)="itemClick('gold')" class="item">
-			<div class="icon"></div>
-			Gold: {{ stateService.inventory.gold }}
+			<img class="icon" src="{{deploypath}}/assets/images/inventory/gold.png" alt="Gold: ">
+			{{ stateService.inventory.gold }}
 		</div>
 
 		<div *ngIf="stateService.inventory.book > 0" (click)="itemClick('book')" class="item">
-			<div class="icon"></div>
-			Book
+			<img class="icon" src="{{deploypath}}/assets/images/inventory/book.png" alt="SpellBook: ">
 		</div>
 
 	</div>

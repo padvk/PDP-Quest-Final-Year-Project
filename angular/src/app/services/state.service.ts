@@ -222,7 +222,11 @@ export class StateService {
 			this.state = 'home';
 
 		} else if (dialogue.name == 'info') {
-			this.playSound('event', 'info');
+			if (dialogue['sound']) {
+				this.playSound('event', dialogue['sound']);
+			} else {
+				this.playSound('event', 'info');
+			}
 			return dialogue;
 
 		} else { // show actual dialogue
@@ -354,8 +358,7 @@ export class StateService {
 				{name: 'Kiku', dialogue: 'Everyone must be at home feeling sorry for themselves.'},
 				{name: 'Kiku', dialogue: 'Hey, why don’t we knock on some houses? Maybe they could tell us more about what’s going on.'},
 				{name: 'Kiku', dialogue: 'Let’s try this house. I hope someone’s home.'},
-				{name: 'event', item: 'knock'},
-				{name: 'info', dialogue: '*Knock knock*'},
+				{name: 'info', dialogue: '*Knock knock*', sound: 'knock'},
 				{name: 'Julissa', dialogue: 'Oh, hey you two.'},
 				{name: 'Julissa', dialogue: 'I’m not sure I’ve seen your faces around here before. Are you from here?'},
 				{name: 'Kiku', dialogue: 'Sorry to bother you. We have travelled from Orilon to restore peace to this town.'},
