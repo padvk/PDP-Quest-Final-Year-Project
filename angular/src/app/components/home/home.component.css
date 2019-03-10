@@ -2,6 +2,15 @@
     text-align: center;
     width: 80%;
     margin: 0 auto;
+    color: white;
+}
+
+.logo-container {
+    display: block;
+    width: 350px;
+    background-color: white;
+    border-radius: 10px;
+    margin: 20px auto;
 }
 
 .play-button {

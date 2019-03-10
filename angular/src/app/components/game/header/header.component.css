@@ -5,6 +5,10 @@
     border: 6px solid #0000ff;
 }
 
+.hide-header {
+    visibility: hidden;
+}
+
 .container {
     display: inline-block;
     width: 48%;
