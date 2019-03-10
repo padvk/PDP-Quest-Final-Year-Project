@@ -37,6 +37,10 @@ export class LocationComponent implements OnInit {
 			case 'town':
 				this.handleTownClick(item);
 				break;
+			
+			case 'market':
+				this.handleMarketClick(item);
+				break;
 		}
 		
 	}
@@ -53,6 +57,19 @@ export class LocationComponent implements OnInit {
 			case 'lamp':
 			case 'clocktower':
 			case 'window':
+				this.stateService.playSound('event', item);
+				break;
+		}
+
+	}
+
+	private handleMarketClick(item: string) {
+		switch(item) {
+			case 'town':
+				this.stateService.changeLocation('town');
+				break;
+			case 'newspaper-stand':
+			case 'fruit-stand':
 				this.stateService.playSound('event', item);
 				break;
 		}

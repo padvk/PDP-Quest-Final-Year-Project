@@ -44,7 +44,7 @@ export class StateService {
 	];
 
 	public events = [
-		'info', 'snore', 'map', 'carrots', 'gold', 'book', 'lamp', 'clocktower', 'window', 'knock', 'achievement', 'menu-select', 'spell', 'shock', 'computer'
+		'info', 'snore', 'map', 'carrots', 'gold', 'book', 'lamp', 'clocktower', 'window', 'knock', 'achievement', 'menu-select', 'spell', 'shock', 'computer', 'newspaper-stand', 'fruit-stand'
 	];
 
 	private dialogueSounds = [];
@@ -432,7 +432,8 @@ export class StateService {
 				{name: 'task'},
 				{name: 'Kiku', dialogue: 'We’ll be off now.'},
 				{name: 'Shopkeeper', dialogue: 'Good luck!'},
-				{name: 'location', location: 'town'},
+				{name: 'info', dialogue: ' Get back to Julissa.'},
+				{name: 'endDialogue', location: 'town'},
 
 				{name: 'Julissa', dialogue: 'Oh you’re back! What took you so long?'},
 				{name: 'Kiku', dialogue: 'We got caught up in a conversation with the shopkeeper.'},

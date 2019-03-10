@@ -15,6 +15,19 @@
 			</div>
 
 	</ng-container>
+
+	<ng-container *ngIf="!dialogueActive && location == 'market'">
+
+		<div class="clickable town" (click)="handleBackgroundClick('town')">
+		</div>
+
+		<div class="clickable newspaper-stand" (click)="handleBackgroundClick('newspaper-stand')">
+		</div>
+
+		<div class="clickable fruit-stand" (click)="handleBackgroundClick('fruit-stand')">
+		</div>
+
+</ng-container>
 	
 	<app-dialogue
 		*ngIf="dialogueActive"

@@ -12,9 +12,13 @@
     z-index: 99;
     position: absolute;
     background-color: transparent;
+    /* background-color: red; */
     cursor: pointer;
 }
 
+/**
+ * Town centre
+ */
 .market {
     top: 56%;
     left: 17%;
@@ -41,4 +45,28 @@
     left: 69%;
     width: 16%;
     height: 75%;
+}
+
+/**
+ * Market
+ */
+ .town {
+    top: 20%;
+    left: 52%;
+    width: 19%;
+    height: 45%;
+}
+
+.newspaper-stand {
+    top: 42%;
+    left: 28%;
+    width: 14%;
+    height: 57%;
+}
+
+.fruit-stand {
+    top: 39%;
+    left: 0%;
+    width: 26%;
+    height: 58%;
 }
