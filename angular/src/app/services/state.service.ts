@@ -15,7 +15,7 @@ export class StateService {
 	public dialogueIndex = 0;
 	public nextLocation = '';
 
-	public dialogueWhiteOnBlack = false;
+	public dialogueWhiteOnBlack = true;
 
 	public inventory = {
 		carrots: 0,
