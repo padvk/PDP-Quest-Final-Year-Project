@@ -52,7 +52,12 @@ export class LocationComponent implements OnInit {
 	private handleTownClick(item: string) {
 		switch(item) {
 			case 'market':
-				this.stateService.changeLocation('market');
+				if (this.stateService.nextLocation == 'market') {
+					this.stateService.changeLocation('market');
+				}
+				break;
+			case 'door':
+				this.dialogueActive = true;
 				break;
 			case 'lamp':
 			case 'clocktower':

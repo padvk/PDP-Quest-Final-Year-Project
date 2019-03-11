@@ -14,6 +14,9 @@
 			<div class="clickable window" (click)="handleBackgroundClick('window')">
 			</div>
 
+			<div *ngIf="stateService.nextLocation != 'market'" class="clickable door highlighted" (click)="handleBackgroundClick('door')">
+			</div>
+
 	</ng-container>
 
 	<ng-container *ngIf="!dialogueActive && location == 'market'">
@@ -27,11 +30,11 @@
 		<div class="clickable fruit-stand" (click)="handleBackgroundClick('fruit-stand')">
 		</div>
 
-</ng-container>
+	</ng-container>
 	
 	<app-dialogue
 		*ngIf="dialogueActive"
-		(finishedDialogue)="this.dialogueActive=false">
+		(finishedDialogue)="dialogueActive=false">
 	</app-dialogue>
 
 </div>

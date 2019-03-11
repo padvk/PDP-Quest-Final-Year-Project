@@ -72,7 +72,7 @@ export class StateService {
 		}
 
 		return partData['initialLocation'];
-		// this.SKIPSTORY(65);
+		// this.SKIPSTORY(42);
 		// return 'town';
 	}
 
@@ -358,6 +358,9 @@ export class StateService {
 				{name: 'Kiku', dialogue: 'Everyone must be at home feeling sorry for themselves.'},
 				{name: 'Kiku', dialogue: 'Hey, why don’t we knock on some houses? Maybe they could tell us more about what’s going on.'},
 				{name: 'Kiku', dialogue: 'Let’s try this house. I hope someone’s home.'},
+				{name: 'info', dialogue: 'Knock on the door to see if anyone\'s in'},
+				{name: 'endDialogue', location: 'town'},
+
 				{name: 'info', dialogue: '*Knock knock*', sound: 'knock'},
 				{name: 'Julissa', dialogue: 'Oh, hey you two.'},
 				{name: 'Julissa', dialogue: 'I’m not sure I’ve seen your faces around here before. Are you from here?'},
