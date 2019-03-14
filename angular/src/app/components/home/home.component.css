@@ -2,7 +2,7 @@
     text-align: center;
     width: 80%;
     margin: 0 auto;
-    color: white;
+    color: black;
 }
 
 .logo-container {
@@ -11,6 +11,7 @@
     background-color: white;
     border-radius: 10px;
     margin: 20px auto;
+    padding: 10px;
 }
 
 .play-button {

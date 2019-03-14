@@ -5,8 +5,11 @@
     border: 6px solid #0000ff;
 }
 
-.hide-header {
-    visibility: hidden;
+.empty-header {
+    width: calc(100% - 12px);
+    height: 100px;
+    background-color: black;
+    border: 6px solid black;
 }
 
 .container {

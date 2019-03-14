@@ -1,4 +1,4 @@
-<div class="header-bar" [class.hide-header]="stateService.currentLocation == 'intro'">
+<div class="header-bar" *ngIf="stateService.currentLocation != 'intro'">
 		<!-- [class.hidden]="stateService.currentLocation == 'intro'" -->
 
 	<div class="container">
@@ -35,3 +35,5 @@
 	</div>
 
 </div>
+
+<div class="empty-header" *ngIf="stateService.currentLocation == 'intro'"></div>
