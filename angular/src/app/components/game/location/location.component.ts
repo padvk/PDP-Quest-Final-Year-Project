@@ -46,18 +46,25 @@ export class LocationComponent implements OnInit {
 	}
 
 	private handleForestClick(item: string) {
-
+		switch(item) {
+			case 'leaves':
+			case 'tree':
+				this.stateService.playSound('event', item);
+				break;
+		}
 	}
 
 	private handleTownClick(item: string) {
 		switch(item) {
 			case 'market':
-				if (this.stateService.nextLocation == 'market') {
+				if (!this.dialogueActive && this.stateService.nextLocation == 'market') {
 					this.stateService.changeLocation('market');
 				}
 				break;
 			case 'door':
-				this.dialogueActive = true;
+				if (!this.dialogueActive && this.stateService.nextLocation == 'town') {
+					this.dialogueActive = true;
+				}
 				break;
 			case 'lamp':
 			case 'clocktower':

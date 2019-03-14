@@ -1,23 +1,35 @@
 <div class="location-background" [ngStyle]="{'background-image': location != 'intro' ? 'url(' + image + ')' : '', 'background-color': location == 'intro' ? '#000' : ''}">
 
-	<ng-container *ngIf="!dialogueActive && location == 'town'">
+	<ng-container *ngIf="location == 'forest'">
 
-			<div class="clickable market" (click)="handleBackgroundClick('market')">
-			</div>
+		<div class="clickable leaves" (click)="handleBackgroundClick('leaves')">
+		</div>
 
-			<div class="clickable lamp" (click)="handleBackgroundClick('lamp')">
-			</div>
-
-			<div class="clickable clocktower" (click)="handleBackgroundClick('clocktower')">
-			</div>
-
-			<div class="clickable window" (click)="handleBackgroundClick('window')">
-			</div>
-
-			<div *ngIf="stateService.nextLocation != 'market'" class="clickable door" (click)="handleBackgroundClick('door')">
-			</div>
+		<div class="clickable tree" (click)="handleBackgroundClick('tree')">
+		</div>
 
 	</ng-container>
+
+
+	<ng-container *ngIf="location == 'town'">
+
+		<div class="clickable market" (click)="handleBackgroundClick('market')">
+		</div>
+
+		<div class="clickable lamp" (click)="handleBackgroundClick('lamp')">
+		</div>
+
+		<div class="clickable clocktower" (click)="handleBackgroundClick('clocktower')">
+		</div>
+
+		<div class="clickable window" (click)="handleBackgroundClick('window')">
+		</div>
+
+		<div *ngIf="stateService.nextLocation != 'market'" class="clickable door" (click)="handleBackgroundClick('door')">
+		</div>
+
+	</ng-container>
+
 
 	<ng-container *ngIf="!dialogueActive && location == 'market'">
 

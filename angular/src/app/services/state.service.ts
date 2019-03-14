@@ -44,7 +44,7 @@ export class StateService {
 	];
 
 	public events = [
-		'info', 'snore', 'map', 'carrots', 'gold', 'book', 'lamp', 'clocktower', 'window', 'knock', 'achievement', 'menu-select', 'spell', 'shock', 'computer', 'newspaper-stand', 'fruit-stand'
+		'info', 'snore', 'map', 'carrots', 'gold', 'book', 'tree', 'leaves', 'lamp', 'clocktower', 'window', 'knock', 'achievement', 'menu-select', 'spell', 'shock', 'computer', 'newspaper-stand', 'fruit-stand'
 	];
 
 	private dialogueSounds = [];

@@ -23,6 +23,23 @@
 }
 
 /**
+ * Forest
+ */
+.leaves {
+    top: 62%;
+    left: 25%;
+    width: 70%;
+    height: 24%;
+}
+
+.tree {
+    top: 1%;
+    left: 11%;
+    width: 83%;
+    height: 28%;
+}
+
+/**
  * Town centre
  */
 .market {
