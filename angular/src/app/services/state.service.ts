@@ -358,7 +358,7 @@ export class StateService {
 				{name: 'Kiku', dialogue: 'Everyone must be at home feeling sorry for themselves.'},
 				{name: 'Kiku', dialogue: 'Hey, why don’t we knock on some houses? Maybe they could tell us more about what’s going on.'},
 				{name: 'Kiku', dialogue: 'Let’s try this house. I hope someone’s home.'},
-				{name: 'info', dialogue: 'Knock on the door to see if anyone\'s in'},
+				{name: 'info', dialogue: 'Knock on the door to see if anyone\'s home.'},
 				{name: 'endDialogue', location: 'town'},
 
 				{name: 'info', dialogue: '*Knock knock*', sound: 'knock'},
