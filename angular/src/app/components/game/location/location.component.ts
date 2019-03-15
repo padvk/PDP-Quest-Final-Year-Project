@@ -41,6 +41,10 @@ export class LocationComponent implements OnInit {
 			case 'market':
 				this.handleMarketClick(item);
 				break;
+
+			case 'lighthouse':
+				this.handleLighthouseClick(item);
+				break;
 		}
 		
 	}
@@ -78,7 +82,9 @@ export class LocationComponent implements OnInit {
 	private handleMarketClick(item: string) {
 		switch(item) {
 			case 'town':
-				this.stateService.changeLocation('town');
+				if (!this.dialogueActive && this.stateService.nextLocation == 'town') {
+					this.stateService.changeLocation('town');
+				}
 				break;
 			case 'newspaper-stand':
 			case 'fruit-stand':
@@ -86,6 +92,19 @@ export class LocationComponent implements OnInit {
 				break;
 		}
 
+	}
+
+	private handleLighthouseClick(item: string) {
+		switch(item) {
+			case 'foghorn':
+				this.stateService.playSound('event', item);
+				break;
+			case 'lighthouseDoor':
+				if (!this.dialogueActive && this.stateService.nextLocation == 'lighthouse') {
+					this.dialogueActive = true;
+				}
+				break;
+		}
 	}
 
 }

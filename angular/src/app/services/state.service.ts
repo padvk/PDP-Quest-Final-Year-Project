@@ -44,7 +44,10 @@ export class StateService {
 	];
 
 	public events = [
-		'info', 'snore', 'map', 'carrots', 'gold', 'book', 'tree', 'leaves', 'lamp', 'clocktower', 'window', 'knock', 'achievement', 'menu-select', 'spell', 'shock', 'computer', 'newspaper-stand', 'fruit-stand'
+		'info', 'snore', 'map', 'carrots', 'gold', 'book', 'tree', 'leaves',
+		'lamp', 'clocktower', 'window', 'knock',
+		'achievement', 'menu-select', 'spell', 'shock',
+		'computer', 'newspaper-stand', 'fruit-stand', 'foghorn'
 	];
 
 	private dialogueSounds = [];
@@ -72,7 +75,7 @@ export class StateService {
 		}
 
 		return partData['initialLocation'];
-		// this.SKIPSTORY(42);
+		// this.SKIPSTORY(65);
 		// return 'town';
 	}
 
@@ -429,7 +432,7 @@ export class StateService {
 				{name: 'inventory', item: 'gold', modify: -5},
 				{name: 'info', dialogue: 'You spent 5 gold and received 10 carrots.'},
 				{name: 'Shopkeeper', dialogue: 'And while you were giving your presentation, I remembered something that might help you in your quest.'},
-				{name: 'Shopkeeper', dialogue: 'There is a wizard who lives in the lighthouse not too far North (tbc) from here. Rumour has it that he is preparing some kind of spell to banish the witch.'},
+				{name: 'Shopkeeper', dialogue: 'There is a wizard who lives in the lighthouse not too far South from here. Rumour has it that he is preparing some kind of spell to banish the witch.'},
 				{name: 'Shopkeeper', dialogue: 'It might be worth you paying him a visit.'},
 				{name: 'Kiku', dialogue: 'Thanks for that, we’ll be sure to drop by to see what he’s up to.'},
 				{name: 'task'},
@@ -450,6 +453,9 @@ export class StateService {
 
 				{name: 'Kiku', dialogue: 'Well, here we are.'},
 				{name: 'Kiku', dialogue: 'Lets hope that the wizard has some idea of what to do.'},
+				{name: 'info', dialogue: 'Knock on the wizard\'s door.'},
+				{name: 'endDialogue', location: 'lighthouse'},
+
 				{name: 'event', item: 'knock'},
 				{name: 'info', dialogue: '*Knock knock*'},
 				{name: 'Omonar', dialogue: 'Evening. Who goes there?'},

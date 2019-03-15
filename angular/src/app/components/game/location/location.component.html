@@ -31,7 +31,7 @@
 	</ng-container>
 
 
-	<ng-container *ngIf="!dialogueActive && location == 'market'">
+	<ng-container *ngIf="location == 'market'">
 
 		<div class="clickable town" (click)="handleBackgroundClick('town')">
 		</div>
@@ -43,7 +43,19 @@
 		</div>
 
 	</ng-container>
+
+
+	<ng-container *ngIf="location == 'lighthouse'">
+
+		<div class="clickable foghorn" (click)="handleBackgroundClick('foghorn')">
+		</div>
+
+		<div *ngIf="!dialogueActive && stateService.nextLocation != 'forest'" class="clickable lighthouseDoor" (click)="handleBackgroundClick('lighthouseDoor')">
+		</div>
+
+	</ng-container>
 	
+
 	<app-dialogue
 		*ngIf="dialogueActive"
 		(finishedDialogue)="dialogueActive=false">
