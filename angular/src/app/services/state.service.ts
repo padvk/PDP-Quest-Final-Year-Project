@@ -506,7 +506,7 @@ export class StateService {
 			unlockedLocations: ['forest', 'town', 'lighthouse'],
 			currentTask: 4,
 			dialogue: [
-				{name: 'event', dialogue: 'achievement'},
+				{name: 'event', item: 'achievement'},
 				{name: 'Olah', dialogue: 'My expenses! They have never looked so magnificent.'},
 				{name: 'Olah', dialogue: 'Thanks for your help. Here’s the book you’re after.'},
 				{name: 'inventory', item: 'book', modify: 1},
