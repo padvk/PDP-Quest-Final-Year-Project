@@ -1,8 +1,11 @@
 .map-background {
     position: absolute;
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
     width: 100%;
     height: calc(100% - 112px);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .location {

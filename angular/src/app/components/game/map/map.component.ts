@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { StateService } from 'src/app/services/state.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
 	selector: 'app-map',
@@ -9,6 +10,9 @@ import { StateService } from 'src/app/services/state.service';
 export class MapComponent implements OnInit {
 
 	@Output() goToLocationEvent: EventEmitter<any> = new EventEmitter();
+
+	public image: string;
+	public deploypath = environment.deploypath;
 
 	public showCantAccessLocationDialogue = false;
 	public cantAccessLocationDialogue = [
@@ -25,6 +29,7 @@ export class MapComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
+		this.image = this.deploypath + '/assets/images/locations/map.png';
 	}
 
 	/**
