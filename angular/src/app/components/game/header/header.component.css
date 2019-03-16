@@ -1,8 +1,8 @@
 .header-bar {
     width: calc(100% - 12px);
     height: 100px;
-    background-color: #ffcc80;
-    border: 6px solid #0000ff;
+    background-color: #b3b6b7;
+    border: 6px solid #21618c;
 }
 
 .empty-header {

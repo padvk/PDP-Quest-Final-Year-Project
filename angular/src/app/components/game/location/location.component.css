@@ -3,7 +3,7 @@
     /* background-color: lightskyblue; */
     width: 100%;
     height: calc(100% - 112px);
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
