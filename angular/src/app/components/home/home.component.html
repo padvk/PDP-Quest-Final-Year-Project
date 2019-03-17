@@ -1,33 +1,35 @@
 <div class="container">
-	<h1>
-		FYP Demo
-	</h1>
+	<div class="content">
+		<h1>
+			FYP Demo
+		</h1>
+		
+		<div class="logo-container">
+			<img width="300" alt="University of Bath logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/University_of_Bath_logo.svg/1200px-University_of_Bath_logo.svg.png">
+		</div>
+		
+		<label for="password-input">Passphrase: </label>
+		<input type="text" id="password-input" [(ngModel)]="password">
 	
-	<div class="logo-container">
-		<img width="300" alt="University of Bath logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/University_of_Bath_logo.svg/1200px-University_of_Bath_logo.svg.png">
+		<button class="play-button" (click)="onPlayClick(1)">
+			Play part 1
+		</button>
+	
+		<button class="play-button" (click)="onPlayClick(2)">
+			Play part 2
+		</button>
+	
+		<button class="play-button" (click)="onPlayClick(3)">
+			Play part 3
+		</button>
+	
+		<button class="play-button" (click)="onPlayClick(4)">
+			Play part 4
+		</button>
+	
+		<!-- <button class="play-button" (click)="end()">
+			Test end button
+		</button> -->
+	
 	</div>
-	
-	<label for="password-input">Passphrase: </label>
-	<input type="text" id="password-input" [(ngModel)]="password">
-
-	<button class="play-button" (click)="onPlayClick(1)">
-		Play part 1
-	</button>
-
-	<button class="play-button" (click)="onPlayClick(2)">
-		Play part 2
-	</button>
-
-	<button class="play-button" (click)="onPlayClick(3)">
-		Play part 3
-	</button>
-
-	<button class="play-button" (click)="onPlayClick(4)">
-		Play part 4
-	</button>
-
-	<!-- <button class="play-button" (click)="end()">
-		Test end button
-	</button> -->
-
 </div>

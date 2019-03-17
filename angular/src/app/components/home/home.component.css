@@ -1,4 +1,11 @@
 .container {
+    min-width: 100%;
+    min-height: 100vh;
+    background-color: lightgrey;
+    position: absolute;
+}
+
+.content {
     text-align: center;
     width: 80%;
     margin: 0 auto;
