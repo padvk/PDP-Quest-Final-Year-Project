@@ -50,18 +50,18 @@
 		<div class="clickable foghorn" (click)="handleBackgroundClick('foghorn')">
 		</div>
 
-		<div *ngIf="!dialogueActive && stateService.nextLocation != 'forest'" class="clickable lighthouseDoor" (click)="handleBackgroundClick('lighthouseDoor')">
+		<div *ngIf="!stateService.dialogueActive && stateService.nextLocation != 'forest'" class="clickable lighthouseDoor" (click)="handleBackgroundClick('lighthouseDoor')">
 		</div>
 
-		<div *ngIf="!dialogueActive" class="clickable waves" (click)="handleBackgroundClick('waves')">
+		<div *ngIf="!stateService.dialogueActive" class="clickable waves" (click)="handleBackgroundClick('waves')">
 		</div>
 
 	</ng-container>
 	
 
 	<app-dialogue
-		*ngIf="dialogueActive"
-		(finishedDialogue)="dialogueActive=false">
+		*ngIf="stateService.dialogueActive"
+		(finishedDialogue)="stateService.dialogueActive=false">
 	</app-dialogue>
 
 </div>

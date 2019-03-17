@@ -35,6 +35,10 @@
     cursor: pointer;
 }
 
+.not-clickable {
+    cursor: auto !important;
+}
+
 .icon {
     width: auto;
     height: 75px;

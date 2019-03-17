@@ -7,8 +7,7 @@
 			Inventory
 		</span>
 
-		<div class="item" (click)="goToMap()">
-			<!-- <div class="icon"></div> -->
+		<div class="item" [class.not-clickable]="stateService.dialogueActive" (click)="goToMap()">
 			<img class="icon" src="{{deploypath}}/assets/images/inventory/map.png" alt="Map">
 		</div>
 

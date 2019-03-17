@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit {
 	}
 
 	public goToMap() {
-		this.stateService.playSound('event', 'map');
 		this.stateService.goToMap();
 	}
 

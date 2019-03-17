@@ -15,6 +15,7 @@ export class StateService {
 	public dialogueIndex = 0;
 	public nextLocation = '';
 
+	public dialogueActive = false;
 	public dialogueWhiteOnBlack = true;
 
 	public inventory = {
@@ -121,10 +122,13 @@ export class StateService {
 	}
 
 	/**
-	 * Go to the map
+	 * Go to the map if there is no dialogue active
 	 */
 	public goToMap() {
-		this.state = 'map';
+		if (!this.dialogueActive) {
+			this.playSound('event', 'map');
+			this.state = 'map';
+		}
 	}	
 
 	/**
@@ -438,7 +442,7 @@ export class StateService {
 				{name: 'task'},
 				{name: 'Kiku', dialogue: 'We’ll be off now.'},
 				{name: 'Shopkeeper', dialogue: 'Good luck!'},
-				{name: 'info', dialogue: ' Get back to Julissa.'},
+				{name: 'info', dialogue: 'Head out of the market and back to Julissa.'},
 				{name: 'endDialogue', location: 'town'},
 
 				{name: 'Julissa', dialogue: 'Oh you’re back! What took you so long?'},

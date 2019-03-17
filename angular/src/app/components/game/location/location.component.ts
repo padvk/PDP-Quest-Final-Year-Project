@@ -11,7 +11,6 @@ export class LocationComponent implements OnInit {
 
 	public location: string;
 	public image: string;
-	public dialogueActive: boolean;
 	public deploypath = environment.deploypath;
 	
 	constructor(public stateService: StateService) { }
@@ -19,7 +18,7 @@ export class LocationComponent implements OnInit {
 	ngOnInit() {
 		this.location = this.stateService.currentLocation;
 		this.image = this.deploypath + '/assets/images/locations/' + this.location + '.png';
-		this.dialogueActive = (this.location == this.stateService.nextLocation);
+		this.stateService.dialogueActive = (this.location == this.stateService.nextLocation);
 
 		this.stateService.playSound('location', this.location);
 	}
@@ -61,13 +60,13 @@ export class LocationComponent implements OnInit {
 	private handleTownClick(item: string) {
 		switch(item) {
 			case 'market':
-				if (!this.dialogueActive && this.stateService.nextLocation == 'market') {
+				if (!this.stateService.dialogueActive && this.stateService.nextLocation == 'market') {
 					this.stateService.changeLocation('market');
 				}
 				break;
 			case 'door':
-				if (!this.dialogueActive && this.stateService.nextLocation == 'town') {
-					this.dialogueActive = true;
+				if (!this.stateService.dialogueActive && this.stateService.nextLocation == 'town') {
+					this.stateService.dialogueActive = true;
 				}
 				break;
 			case 'lamp':
@@ -82,7 +81,7 @@ export class LocationComponent implements OnInit {
 	private handleMarketClick(item: string) {
 		switch(item) {
 			case 'town':
-				if (!this.dialogueActive && this.stateService.nextLocation == 'town') {
+				if (!this.stateService.dialogueActive && this.stateService.nextLocation == 'town') {
 					this.stateService.changeLocation('town');
 				}
 				break;
@@ -101,8 +100,8 @@ export class LocationComponent implements OnInit {
 				this.stateService.playSound('event', item);
 				break;
 			case 'lighthouseDoor':
-				if (!this.dialogueActive && this.stateService.nextLocation == 'lighthouse') {
-					this.dialogueActive = true;
+				if (!this.stateService.dialogueActive && this.stateService.nextLocation == 'lighthouse') {
+					this.stateService.dialogueActive = true;
 				}
 				break;
 		}
