@@ -43,38 +43,38 @@
  * Town centre
  */
 .market {
-    top: 56%;
-    left: 17%;
+    top: 57%;
+    left: 18%;
+    width: 9%;
+    height: 22%;
+}
+
+.lamp {
+    top: 32%;
+    left: 84%;
     width: 9%;
     height: 25%;
 }
 
-.lamp {
-    top: 15%;
-    left: 84%;
-    width: 10%;
-    height: 29%;
-}
-
 .clocktower {
-    top: 2%;
-    left: 20%;
+    top: 6%;
+    left: 21%;
     width: 12%;
-    height: 53%;
+    height: 51%;
 }
 
 .window {
-    top: 15%;
-    left: 69%;
-    width: 16%;
-    height: 75%;
+    top: 7%;
+    left: 68%;
+    width: 12%;
+    height: 71%;
 }
 
 .door {
-    top: 58%;
+    top: 59%;
     left: 80%;
     width: 6%;
-    height: 38%;
+    height: 33%;
 }
 
 /**
@@ -88,17 +88,17 @@
 }
 
 .newspaper-stand {
-    top: 42%;
+    top: 46%;
     left: 28%;
-    width: 14%;
-    height: 57%;
+    width: 13%;
+    height: 41%;
 }
 
 .fruit-stand {
-    top: 39%;
-    left: 0%;
-    width: 26%;
-    height: 58%;
+    top: 59%;
+    left: 77%;
+    width: 23%;
+    height: 28%;
 }
 
 /**
@@ -106,9 +106,9 @@
  */
  .foghorn {
     top: 1%;
-    left: 32%;
-    width: 20%;
-    height: 41%;
+    left: 37%;
+    width: 17%;
+    height: 32%;
 }
 
 .lighthouseDoor {
@@ -116,4 +116,11 @@
     left: 32%;
     width: 27%;
     height: 35%;
+}
+
+.waves {
+    top: 79%;
+    left: 0%;
+    width: 31%;
+    height: 21%;
 }

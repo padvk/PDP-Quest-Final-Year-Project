@@ -47,7 +47,7 @@ export class StateService {
 		'info', 'snore', 'map', 'carrots', 'gold', 'book', 'tree', 'leaves',
 		'lamp', 'clocktower', 'window', 'knock',
 		'achievement', 'menu-select', 'spell', 'shock',
-		'computer', 'newspaper-stand', 'fruit-stand', 'foghorn'
+		'computer', 'newspaper-stand', 'fruit-stand', 'foghorn', 'waves'
 	];
 
 	private dialogueSounds = [];

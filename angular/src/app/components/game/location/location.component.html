@@ -53,6 +53,9 @@
 		<div *ngIf="!dialogueActive && stateService.nextLocation != 'forest'" class="clickable lighthouseDoor" (click)="handleBackgroundClick('lighthouseDoor')">
 		</div>
 
+		<div *ngIf="!dialogueActive" class="clickable waves" (click)="handleBackgroundClick('waves')">
+		</div>
+
 	</ng-container>
 	
 

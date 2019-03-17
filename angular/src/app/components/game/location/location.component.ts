@@ -97,6 +97,7 @@ export class LocationComponent implements OnInit {
 	private handleLighthouseClick(item: string) {
 		switch(item) {
 			case 'foghorn':
+			case 'waves':
 				this.stateService.playSound('event', item);
 				break;
 			case 'lighthouseDoor':
