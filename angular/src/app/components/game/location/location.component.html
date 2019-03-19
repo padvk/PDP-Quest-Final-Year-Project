@@ -1,4 +1,10 @@
-<div class="location-background" [ngStyle]="{'background-image': location != 'intro' ? 'url(' + image + ')' : '', 'background-color': location == 'intro' ? '#000' : ''}">
+<div
+	class="location-background"
+	[ngStyle]="{
+		'background-image': location != 'intro' ? 'url(' + image + ')' : '',
+		'background-color': location == 'intro' ? '#000' : '',
+		'background-size': location == 'forest' ? 'cover' : ''
+	}">
 
 	<ng-container *ngIf="location == 'forest'">
 

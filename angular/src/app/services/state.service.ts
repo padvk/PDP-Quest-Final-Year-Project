@@ -34,10 +34,14 @@ export class StateService {
 	public tasks = [
 		{location: 'forest', description: 'Make your way through the forest towards the town of Arkala'},
 		{location: 'town', description: 'Uncover more of the mystery in the town centre'},
-		{location: 'town', description: 'Find the market and fetch some carrots from the market for Julissa'},
+		{location: 'town', description: 'Kock on the door to see if anyone\'s home'},
+		{location: 'town', description: 'Explore your surroundings to find the market and fetch some carrots from the market for Julissa'},
+		{location: 'town', description: 'Bring the carrots back to Julissa'},
 		{location: 'lighthouse', description: 'Visit the wizard in the lighthouse'},
+		{location: 'lighthouse', description: 'Knock on the lighthouse door to see if the Wizard is in'},
 		{location: 'forest', description: 'Get the spell book from Olah and bring it back to Omonar'},
-		{location: 'lighthouse', description: 'Assist the Wizard with his literature review.'},
+		{location: 'lighthouse', description: 'Assist the Wizard with his literature review'},
+		{location: 'lighthouse', description: ''},
 	];
 
 	public characters = [
@@ -365,6 +369,7 @@ export class StateService {
 				{name: 'Kiku', dialogue: 'Everyone must be at home feeling sorry for themselves.'},
 				{name: 'Kiku', dialogue: 'Hey, why don’t we knock on some houses? Maybe they could tell us more about what’s going on.'},
 				{name: 'Kiku', dialogue: 'Let’s try this house. I hope someone’s home.'},
+				{name: 'task'},
 				{name: 'info', dialogue: 'Knock on the door to see if anyone\'s home.'},
 				{name: 'endDialogue', location: 'town'},
 
@@ -413,7 +418,8 @@ export class StateService {
 				{name: 'Shopkeeper', dialogue: '... and I’m sure both of you together could come up with something exciting!!'},
 				{name: 'Shopkeeper', dialogue: 'In return I’ll give you a discount. 10 carrots for your 5 gold.'},
 				{name: 'Shopkeeper', dialogue: 'Deal?'},
-				{name: 'info', dialogue: 'Placeholder while I decide exactly what task to give you.'},
+				{name: 'info', dialogue: 'Complete the following task:'},
+				{name: 'info', dialogue: 'Give a 3-slide presentation on the history of carrots, and recent news in the carrot industry.'},
 				{name: 'info', dialogue: 'End of part 1.'},
 				{name: 'endPart', part: '1'}
 			]
@@ -425,7 +431,7 @@ export class StateService {
 			gold: 5,
 			book: 0,
 			unlockedLocations: ['forest', 'town'],
-			currentTask: 2,
+			currentTask: 3,
 			dialogue: [
 				{name: 'event', item: 'achievement'},
 				{name: 'Shopkeeper', dialogue: 'Thanks, you two. You two came up with some really interesting ideas.'},
@@ -451,12 +457,14 @@ export class StateService {
 				{name: 'Julissa', dialogue: 'Anyway, here’s your half. You got me the perfect amount of carrots I need to prepare dinner. Thanks for helping me out.'},
 				{name: 'inventory', item: 'carrots', modify: -5},
 				{name: 'Kiku', dialogue: 'No problem. We should have enough food now for us to continue in our quest.'},
+				{name: 'task'},
 				{name: 'Kiku', dialogue: 'Nice meeting you, Julissa.'},
 				{name: 'Julissa', dialogue: 'See you around!'},
 				{name: 'map', nextLocation: 'lighthouse'},
 
 				{name: 'Kiku', dialogue: 'Well, here we are.'},
 				{name: 'Kiku', dialogue: 'Lets hope that the wizard has some idea of what to do.'},
+				{name: 'task'},
 				{name: 'info', dialogue: 'Knock on the wizard\'s door.'},
 				{name: 'endDialogue', location: 'lighthouse'},
 
@@ -496,7 +504,8 @@ export class StateService {
 				{name: 'Olah', dialogue: 'He is probably searching for this fantastic book here. We used to read from it all the time together.'},
 				{name: 'Olah', dialogue: 'Tell you what. You two look like you know your way around a computer. Would you mind giving me a helping hand to write up this excel spreadsheet?'},
 				{name: 'Olah', dialogue: 'I’ve been struggling with it all day. In return I’ll give you the spell book that Omonar is after.'},
-				{name: 'info', dialogue: 'Placeholder while I decide exactly what task to give you.'},
+				{name: 'info', dialogue: 'Complete the following task:'},
+				{name: 'info', dialogue: 'Complete the provided Excel Exercise worksheet as best you can.'},
 				{name: 'info', dialogue: 'End of part 2.'},
 				{name: 'endPart', part: '2'}
 			]
@@ -508,7 +517,7 @@ export class StateService {
 			gold: 0,
 			book: 0,
 			unlockedLocations: ['forest', 'town', 'lighthouse'],
-			currentTask: 4,
+			currentTask: 7,
 			dialogue: [
 				{name: 'event', item: 'achievement'},
 				{name: 'Olah', dialogue: 'My expenses! They have never looked so magnificent.'},
@@ -525,6 +534,7 @@ export class StateService {
 				{name: 'Omonar', dialogue: 'You have returned! Did you find the book that I was after?'},
 				{name: 'Kiku', dialogue: 'I think so. Olah seemed to know exactly which book you were talking about.'},
 				{name: 'Kiku', dialogue: 'Here it is.'},
+				{name: 'task'},
 				{name: 'inventory', item: 'book', modify: -1},
 				{name: 'info', dialogue: 'You gave Omonar the spell book.'},
 				{name: 'Omonar', dialogue: 'That’s the one. I have some very fond memories of this book.'},
@@ -534,7 +544,8 @@ export class StateService {
 				{name: 'Omonar', dialogue: 'Say, you could help me organise and make sense of all this literature! Then we’d be able to get down to business in no time.'},
 				{name: 'Omonar', dialogue: 'Could you write me a literature review of this here pile of books?'},
 				{name: 'Kiku', dialogue: 'I wish I had listened in my magic classes...'},
-				{name: 'info', dialogue: 'Placeholder while I decide exactly what task to give you.'},
+				{name: 'info', dialogue: 'Complete the following task:'},
+				{name: 'info', dialogue: 'Write a 2-paragraph literature review on the provided Harry Potter extract.'},
 				{name: 'info', dialogue: 'End of part 3.'},
 				{name: 'endPart', part: '3'}
 			]
