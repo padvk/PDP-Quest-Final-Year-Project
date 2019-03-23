@@ -419,8 +419,8 @@ export class StateService {
 				{name: 'Shopkeeper', dialogue: '... and I’m sure both of you together could come up with something exciting!!'},
 				{name: 'Shopkeeper', dialogue: 'In return I’ll give you a discount. 10 carrots for your 5 gold.'},
 				{name: 'Shopkeeper', dialogue: 'Deal?'},
-				{name: 'info', dialogue: 'Complete the following task:'},
-				{name: 'info', dialogue: 'Give a 3-slide presentation on the history of carrots, and recent news in the carrot industry.'},
+				{name: 'info', dialogue: 'Time to develop your presentation skills. Complete the following task:'},
+				{name: 'info', dialogue: 'Prepare a 3-slide presentation on the history of carrots, and recent news in the carrot industry.'},
 				{name: 'info', dialogue: 'End of part 1.'},
 				{name: 'endPart', part: '1'}
 			]
@@ -505,7 +505,7 @@ export class StateService {
 				{name: 'Olah', dialogue: 'He is probably searching for this fantastic book here. We used to read from it all the time together.'},
 				{name: 'Olah', dialogue: 'Tell you what. You two look like you know your way around a computer. Would you mind giving me a helping hand to write up this excel spreadsheet?'},
 				{name: 'Olah', dialogue: 'I’ve been struggling with it all day. In return I’ll give you the spell book that Omonar is after.'},
-				{name: 'info', dialogue: 'Complete the following task:'},
+				{name: 'info', dialogue: 'Time to develop your Excel spreadsheet skills. Complete the following task:'},
 				{name: 'info', dialogue: 'Complete the provided Excel Exercise worksheet as best you can.'},
 				{name: 'info', dialogue: 'End of part 2.'},
 				{name: 'endPart', part: '2'}
@@ -545,7 +545,7 @@ export class StateService {
 				{name: 'Omonar', dialogue: 'Say, you could help me organise and make sense of all this literature! Then we’d be able to get down to business in no time.'},
 				{name: 'Omonar', dialogue: 'Could you write me a literature review of this here pile of books?'},
 				{name: 'Kiku', dialogue: 'I wish I had listened in my magic classes...'},
-				{name: 'info', dialogue: 'Complete the following task:'},
+				{name: 'info', dialogue: 'Time to develop your literature review skills. Complete the following task:'},
 				{name: 'info', dialogue: 'Write a 2-paragraph literature review on the provided Harry Potter extract.'},
 				{name: 'info', dialogue: 'End of part 3.'},
 				{name: 'endPart', part: '3'}
