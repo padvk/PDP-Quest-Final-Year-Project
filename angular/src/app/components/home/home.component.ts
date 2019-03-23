@@ -28,14 +28,14 @@ export class HomeComponent implements OnInit{
 	}
 
 	public onPlayClick(part: number) {
-		this.play.emit(part); // TODO: remove
+		// this.play.emit(part); // TODO: remove
 		this.mainService.auth(part, this.password).subscribe(
 			(data: any) => {
 				console.log(data.data);
 				if (data.authed) {
 					this.play.emit(part);
 				} else {
-					// alert('Your password is not recognised for part ' + part + '.');
+					alert('Your password is not recognised for part ' + part + '.');
 				}
 			},
 			error => {

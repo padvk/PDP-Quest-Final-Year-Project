@@ -74,6 +74,7 @@ export class StateService {
 		this.inventory.book = partData['book'];
 		this.currentTask = partData['currentTask'];
 		this.nextLocation = partData['initialLocation'];
+		this.dialogueIndex = 0;
 
 		for (let i = 0; i < partData['unlockedLocations'].length; i++) {
 			this.locations[partData['unlockedLocations'][i]].cost = 0;
