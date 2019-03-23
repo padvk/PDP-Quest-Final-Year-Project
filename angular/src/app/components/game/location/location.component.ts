@@ -60,7 +60,7 @@ export class LocationComponent implements OnInit {
 	private handleTownClick(item: string) {
 		switch(item) {
 			case 'market':
-				if (!this.stateService.dialogueActive && this.stateService.nextLocation == 'market') {
+				if (!this.stateService.dialogueActive) {
 					this.stateService.changeLocation('market');
 				}
 				break;
@@ -81,7 +81,7 @@ export class LocationComponent implements OnInit {
 	private handleMarketClick(item: string) {
 		switch(item) {
 			case 'town':
-				if (!this.stateService.dialogueActive && this.stateService.nextLocation == 'town') {
+				if (!this.stateService.dialogueActive) {
 					this.stateService.changeLocation('town');
 				}
 				break;
