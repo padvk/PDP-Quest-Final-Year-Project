@@ -1,4 +1,5 @@
 .container {
+    display: block;
     min-width: 100%;
     min-height: 100vh;
     background-color: lightgrey;
@@ -6,6 +7,7 @@
 }
 
 .content {
+    display: block;
     text-align: center;
     width: 80%;
     margin: 0 auto;
@@ -26,4 +28,13 @@
     height: 30px;
     margin: 30px auto;
     display: block;
+}
+
+.licence {
+    position: absolute;
+    bottom: 10px;
+
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%)
 }
