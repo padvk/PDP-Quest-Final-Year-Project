@@ -18,6 +18,9 @@ export class StateService {
 	public dialogueActive = false;
 	public dialogueWhiteOnBlack = true;
 
+	public finishedPart = false;
+	public taskText = '';
+
 	public inventory = {
 		carrots: 0,
 		gold: 0,
@@ -231,6 +234,7 @@ export class StateService {
 			this.nextLocation = dialogue['location'];
 
 		} else if (dialogue.name == 'endPart') { // end of part
+			this.setTask();
 			this.state = 'home';
 
 		} else if (dialogue.name == 'info') {
@@ -299,6 +303,25 @@ export class StateService {
 			case 'character': return this.dialogueSounds;
 			case 'event': return this.eventSounds;
 		}
+	}
+
+	/**
+	 * Displays the most recently set task on the home screen
+	 */
+	private setTask() {
+		if (this.currentPartIndex >= 3) {
+			this.finishedPart = false;
+
+		} else {
+			const tasks = [
+				'Prepare a 3-slide presentation on the history of carrots, and recent news in the carrot industry.',
+				'Complete the provided Excel Exercise worksheet as best you can.',
+				'Write a 2-paragraph critical review on the provided Harry Potter extract.'
+			];
+			this.taskText = tasks[this.currentPartIndex];
+			this.finishedPart = true;
+		}
+
 	}
 
 	/**

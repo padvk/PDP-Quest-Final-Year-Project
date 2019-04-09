@@ -31,6 +31,10 @@
 			Play part 4
 		</button>
 
+		<div class="task" *ngIf="stateService.finishedPart">
+			Your next task: {{ stateService.taskText }}
+		</div>
+
 		<div class="licence">
 			Except where otherwise noted, graphical content on this site is licensed under a Creative Commons Attribution 4.0 International license
 		</div>

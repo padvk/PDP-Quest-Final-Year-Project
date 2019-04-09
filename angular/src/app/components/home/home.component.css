@@ -30,6 +30,16 @@
     display: block;
 }
 
+.task {
+    display: block;
+    width: 600px;
+    background-color: white;
+    border-radius: 10px;
+    margin: 40px auto;
+    padding: 10px;
+    font-size: 20px;
+}
+
 .licence {
     position: absolute;
     bottom: 10px;
