@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit{
 
 	constructor(
 		private mainService: MainService,
-		private stateService: StateService
+		public stateService: StateService
 	) { }
 
 	ngOnInit() {
