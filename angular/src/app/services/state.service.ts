@@ -37,7 +37,7 @@ export class StateService {
 	public tasks = [
 		{location: 'forest', description: 'Make your way through the forest towards the town of Arkala'},
 		{location: 'town', description: 'Uncover more of the mystery in the town centre'},
-		{location: 'town', description: 'Kock on the door to see if anyone\'s home'},
+		{location: 'town', description: 'Knock on the door to see if anyone\'s home'},
 		{location: 'town', description: 'Explore your surroundings to find the market and fetch some carrots from the market for Julissa'},
 		{location: 'town', description: 'Bring the carrots back to Julissa'},
 		{location: 'lighthouse', description: 'Visit the wizard in the lighthouse'},
